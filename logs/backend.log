@@ -267,3 +267,57 @@
 11/13/2022, 4:41:39 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 11/13/2022, 4:42:28 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 11/13/2022, 5:00:17 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11/27/2022, 10:44:10 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11/27/2022, 10:44:11 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11/27/2022, 10:44:11 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11/27/2022, 10:45:22 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11/27/2022, 10:51:51 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11/27/2022, 11:01:21 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11/27/2022, 11:04:21 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | Error: Invalid username / email 
+11/27/2022, 11:08:58 PM - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:08:58 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:06 PM - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:06 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:09 PM - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:09 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:10 PM - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:10 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:10 PM - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:10 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:10 PM - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:10 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:15 PM - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:09:15 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+11/27/2022, 11:24:43 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11/27/2022, 11:25:34 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 12:57:12 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | Error: Invalid username / email 
+12/6/2022, 12:57:19 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | Error: Invalid username / email 
+12/6/2022, 1:28:48 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:29:15 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:36:35 PM - ERROR - error while trying to login user sanfasisko@kadimanoar.org | Error: Invalid username / email 
+12/6/2022, 1:38:21 PM - ERROR - error while trying to login user eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODgzMzQyLCJpYXQiOjE2NTA4ODMxODAsImp0aSI6IjE3ZTE0ZTJjYzczZjQ3ZTY4MGE5MjMxNzQ0YmE1Y2E4IiwidXNlcl9pZCI6N30.BSttya-hevIU1GaZi7VbHzGSnHNwlQOTGOcqd9TOBHM | Error: Invalid username / email 
+12/6/2022, 1:39:46 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:43:26 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:45:02 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:46:12 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:47:48 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:48:42 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:49:40 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:50:55 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:51:43 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:53:41 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+12/6/2022, 1:58:08 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 

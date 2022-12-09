@@ -24,6 +24,7 @@ const login = async(req, res) => {
     const user = req.body;
     const authToken = await authService.login(user);
     res.json({ authToken });
+    console.log(authToken)
   } catch (err) {
     if (err.message === ErrorMessages.InvalidCredentials) {
       return res.status(400).send(err.message);

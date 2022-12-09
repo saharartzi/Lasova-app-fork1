@@ -53,11 +53,12 @@ async function remove(volunteerIds) {
 async function adminUpdate(volunteer, currentUser) {
   try {
     const originalVolunteer = await Volunteer.findById(volunteer._id)
+  
     // check if the same user who posting
     var volunteerInHisProgram = false
     if (currentUser.userType === 1) {
       Object.values(currentUser.associatedPrograms).forEach(program => {
-        if (originalVolunteer.volunteeringProgram === program["name"]) {
+        if (originalVolunteer.volunteeringProgram[0] === program["name"]) {
           volunteerInHisProgram = true
         }
         })
