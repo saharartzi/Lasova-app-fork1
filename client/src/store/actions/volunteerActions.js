@@ -21,7 +21,10 @@ export function loadVolunteers(email=null) { //naama-added email to try to get v
       const volunteers = await volunteerService.query();
       dispatch({ type: 'LOAD_VOLUNTEERS', volunteers });
       if (email) {
-      const volunteerData = volunteers.find((volunteer)=> volunteer.email=email) //naama
+      const filteredVolunteers = await volunteerService.query({email});
+      const volunteerData = filteredVolunteers[0]
+      console.log("volunteerData:",volunteerData)
+      //const volunteerData = volunteers.find((volunteer)=> volunteer.email=email) //naama
       dispatch({type: 'LOAD_VOLUNTEER', volunteerData })  //naama
       }
     } catch (err) {

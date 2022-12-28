@@ -8,8 +8,9 @@ export const volunteerService = {
 
 const BASE_URL = 'volunteer';
 
-function query({ isDefault, doReset } = {}) {
-  return httpService.get(`${BASE_URL}`);
+//function query({ isDefault, doReset } = {}) {
+function query(filter = {}) {
+  return httpService.get(`${BASE_URL}`,filter);
 }
 
 function saveVolunteer(volunteer,user="") {
