@@ -12,13 +12,19 @@ function query({ isDefault, doReset } = {}) {
   return httpService.get(`${BASE_URL}`);
 }
 
-function saveVolunteer(volunteer) {
-  return volunteer._id ? _updateVolunteer(volunteer) : _addVolunteer(volunteer);
+function saveVolunteer(volunteer,user="") {
+  return volunteer._id ? _updateVolunteer(volunteer,user) : _addVolunteer(volunteer);
 }
 
-function _updateVolunteer(volunteer) {
+function _updateVolunteer(volunteer,user) {
   console.log("update id:",volunteer._id)
-  return httpService.put(`${BASE_URL}/${BASE_URL}/${volunteer._id}`, volunteer);
+  if (!user || volunteer.email===user.email) {
+    return httpService.put(`${BASE_URL}/${BASE_URL}/${volunteer._id}`, volunteer);
+  }
+  else {
+    console.log("update vol by admin")
+    return httpService.put(`${BASE_URL}/admin/${volunteer._id}`, volunteer);  
+  }
 }
 
 //naama

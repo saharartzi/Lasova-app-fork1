@@ -216,13 +216,11 @@ const Home = () => {
     let currVol={...row,hours:volHours}
     console.log(currVol,"/n",lastHours,"/n",hoursApproval)
     setEditVolunteer(currVol)
-    //console.log(volunteer)
-
   }
 
   useEffect (()=> {
     if (editVolunteer) {
-      dispatch(saveVolunteer(editVolunteer))
+      dispatch(saveVolunteer(editVolunteer,user))
     console.log(editVolunteer._id)
     }
   },[editVolunteer])

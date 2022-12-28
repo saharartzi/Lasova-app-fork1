@@ -58,7 +58,8 @@ async function adminUpdate(volunteer, currentUser) {
     var volunteerInHisProgram = false
     if (currentUser.userType === 1) {
       Object.values(currentUser.associatedPrograms).forEach(program => {
-        if (originalVolunteer.volunteeringProgram[0] === program["name"]) {
+        //if (originalVolunteer.volunteeringProgram[0] === program["name"]) {
+        if (originalVolunteer.volunteeringProgram[0] === program) { //Naama- changed for test
           volunteerInHisProgram = true
         }
         })
@@ -70,7 +71,7 @@ async function adminUpdate(volunteer, currentUser) {
     const res = await Volunteer.findByIdAndUpdate(volunteer._id, volunteer);
     return res;
   } catch (err) {
-    logger.error(`error updating volunteer ${volunteer.id}`, err);
+    logger.error(`error updating volunteer ${volunteer._id}`, err);
     throw err;
   }
 }

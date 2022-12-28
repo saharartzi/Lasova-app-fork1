@@ -85,12 +85,12 @@ function filterVolunteersByStatus(status, volunteers) {
  * save refers both to put and post requests
  * if volunteer has id, we know it is an update request,
  * else it is post. */
-export function saveVolunteer(volunteerToSave) {
+export function saveVolunteer(volunteerToSave,user) {
   return async (dispatch) => {
     try {
       const type = volunteerToSave._id ? 'UPDATE_VOLUNTEER' : 'ADD_VOLUNTEER';
       if (type === 'UPDATE_VOLUNTEER') {
-        var updatedVolunteer = volunteerService.saveVolunteer(volunteerToSave);
+        var updatedVolunteer = volunteerService.saveVolunteer(volunteerToSave,user);//Naama
         console.log(volunteerToSave);
       } else {
         volunteerToSave = await volunteerService.saveVolunteer(volunteerToSave);
