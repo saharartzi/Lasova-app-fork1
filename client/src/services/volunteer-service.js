@@ -17,11 +17,13 @@ function saveVolunteer(volunteer) {
 }
 
 function _updateVolunteer(volunteer) {
-  return httpService.put(`${BASE_URL}/${volunteer._id}`, volunteer);
+  console.log("update id:",volunteer._id)
+  return httpService.put(`${BASE_URL}/${BASE_URL}/${volunteer._id}`, volunteer);
 }
 
 //naama
 function getVolunteerById(volunteerId) {
+  console.log("id to get:",volunteerId)
   return httpService.get(`${BASE_URL}/${volunteerId}`,volunteerId);
 }
 

@@ -6,6 +6,7 @@ const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/' : '//localhost:
 var axios = Axios.create({});
 axios.interceptors.request.use((config) => {
   const accessToken = accessTokenService.getToken();
+  console.log("TOKEN:",accessToken);
   config.headers['Authorization'] = `Bearer ${accessToken}`;
   return config;
 });

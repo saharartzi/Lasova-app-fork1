@@ -77,7 +77,6 @@ async function adminUpdate(volunteer, currentUser) {
 
 async function volunteerUpdate(volunteer, currentUser) {
   try {
-    
     const originalVolunteer = await Volunteer.findById(volunteer._id)
     // check if the same user who posting
     checkIfSameUser = query({ email: currentUser.email }).then((response)=>{
@@ -90,7 +89,10 @@ async function volunteerUpdate(volunteer, currentUser) {
     for (const [key,value] of Object.entries(volunteer)) {
       if (key === 'hours'){
         value.map((entry, index) => { 
-        if (originalVolunteer.hours.includes(originalVolunteer.hours[index]) === false && entry['verified'] !== 'false') {
+          console.log(entry);
+        if (originalVolunteer.hours.includes(originalVolunteer.hours[index]) === false && entry['verified'] !== false) {
+          console.log("error in hours entry - Naama", (entry['verified'] !== false))
+          console.log(originalVolunteer.hours,index)
           throw Error(ErrorMessages.DontHavePermission);
         } 
         if (originalVolunteer.hours.includes(originalVolunteer.hours[index]) && entry['verified'] ==! originalVolunteer.hours[index]['verified'] ) {
@@ -99,7 +101,7 @@ async function volunteerUpdate(volunteer, currentUser) {
         if(originalVolunteer.hours.includes(originalVolunteer.hours[index]) && [entry.date,entry.starthour,entry.endhour] !== [
           originalVolunteer.hours[index]['date'],
           originalVolunteer.hours[index]['starthour'],
-          originalVolunteer.hours[index]['endhour']] && entry['verified'] !== 'false') {
+          originalVolunteer.hours[index]['endhour']] && entry['verified'] !== false) {
             throw Error(ErrorMessages.DontHavePermission);
           }
        })

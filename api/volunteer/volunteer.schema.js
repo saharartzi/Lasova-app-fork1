@@ -37,7 +37,7 @@ const Volunteer = new Schema({
   weekdayAvailability: [{ type: String, default: '' }],
   status: { type: String, trim: true, default: '' },
   volunteeringProgram: [{ type: String, default: '' }],//will be array with single string
-  hours: [{ type: Array, default: [] }] // will be array of object like : [{date:'12.03.2022',start:'13:00',end:'16:00',verified:'false'}]
+  hours: { type: Array, default: [] } // NAAMA removed [...] //will be array of object like : [{date:'12.03.2022',start:'13:00',end:'16:00',verified:'false'}]
 });
 
 module.exports = model('Volunteer', Volunteer);

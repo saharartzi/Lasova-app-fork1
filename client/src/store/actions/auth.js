@@ -18,6 +18,7 @@ export const loadUser = (user) => async (dispatch) => {
 export const login = (email, password) => async (dispatch) => {
   try {
     const token = await authService.login(email, password);
+    console.log("TOKEN-REDUX:",token)
     dispatch({
       type: LOGIN_SUCCESS,
       payload: token

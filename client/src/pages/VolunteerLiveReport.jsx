@@ -25,12 +25,12 @@ export default function VolunteerLiveReport() {
   useEffect(() => {
     if (!volunteer) {
        //dispatch(loadVolunteerById(user._id));
-       dispatch(loadVolunteers(user.email)); // working but not getting the correct volunteer, maybe better to use ref in the backend to get the same id from the user
-       //dispatch(loadVolunteerById("62a5c9a42071b52f89b35c82")); //for example only-"Reemos"
+       //dispatch(loadVolunteers(user.email)); // working but not getting the correct volunteer, maybe better to use ref in the backend to get the same id from the user
+       dispatch(loadVolunteerById("62a5c9a42071b52f89b35c82")); //for example only-"Reemos"
     }
   }, []);
     
-  const { volunteer } = useSelector((state) => state.volunteerReducer);
+  let { volunteer } = useSelector((state) => state.volunteerReducer);
 
   const [editVolunteer,setEditVolunteer]= useState({
     ...volunteer
@@ -47,7 +47,7 @@ export default function VolunteerLiveReport() {
   useEffect(()=>{
     console.log("volunteer: ", volunteer)
     if (volunteer) {
-    hours=[...JSON.parse(JSON.stringify(volunteer.hours))] //same as spread, need to be changed in the data
+    hours=[...JSON.parse(JSON.stringify(volunteer.hours))]
   }},[volunteer])
 
   useEffect(()=>{
@@ -83,9 +83,7 @@ export default function VolunteerLiveReport() {
 
   useEffect(()=>{
     if (volunteer) {
-    console.log(editVolunteer)
-    dispatch(saveVolunteer(editVolunteer))
-    //console.log(volunteer)
+    volunteer = dispatch(saveVolunteer(editVolunteer))
     }
   },[editVolunteer])
 
@@ -109,12 +107,12 @@ export default function VolunteerLiveReport() {
         {endTime && (<div className="report-form">
           <p className='report-program'>{volunteer.groupName}</p>
           <p className='date-text'>תאריך הפעילות</p>
-          <p>{new Date(startTime).getDate()+"."+(+(new Date(startTime).getMonth())+1)+"."+new Date(startTime).getFullYear()}</p>
+          <p>{new Date(volunteer.hours[0].start).getDate()+"."+(+(new Date(volunteer.hours[0].start).getMonth())+1)+"."+new Date(volunteer.hours[0].start).getFullYear()}</p>
           <div className='hours'>
           <p className='start-hour-text'>שעת התחלה</p>
-          <p>{new Date(startTime).toString().split(" ")[4]}</p>
+          <p>{new Date(volunteer.hours[0].start).toString().split(" ")[4]}</p>
           <p className='end-hour-text'>שעת סיום</p>
-          <p>{new Date(endTime).toString().split(" ")[4]}</p>
+          <p>{new Date(volunteer.hours[0].end).toString().split(" ")[4]}</p>
           </div>
           <button className='confirm-btn'>אישור</button>
         </div>)}

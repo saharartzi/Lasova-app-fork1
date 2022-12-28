@@ -106,3 +106,45 @@
   display: flex;
   width: 97%;
 }
+
+.MuiList-root {
+  .Mui-disabled {
+    color:rgb(38, 144, 165);
+    opacity: 100% !important;
+    font-style: italic;
+  }
+}
+
+/*.MuiButtonBase-root {
+  color:rgb(168, 244, 252) !important;
+  height:80px;
+  width: 80px;
+  
+}*/
+.circle-approve {
+  color: rgb(146, 206, 127);
+  font-size: 25px;
+  
+  /*height: 30px;
+  width: 30px;
+  background-color: rgb(146, 206, 127);*/
+
+}
+
+.approve-hours {
+  display: flex;
+  flex-direction: row;
+  gap:10px;
+}
+
+.approve-hours-btn {
+  border-radius: 5px;
+  padding: 7px;
+  background-color: rgb(208, 235, 208);
+  color: #646363;
+    font-weight: 600;
+}
+.approve-hours-btn:hover {
+  padding: 9px;
+  background-color: rgb(152, 208, 152);
+}

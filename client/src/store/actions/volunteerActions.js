@@ -90,12 +90,14 @@ export function saveVolunteer(volunteerToSave) {
     try {
       const type = volunteerToSave._id ? 'UPDATE_VOLUNTEER' : 'ADD_VOLUNTEER';
       if (type === 'UPDATE_VOLUNTEER') {
-        volunteerService.saveVolunteer(volunteerToSave);
+        var updatedVolunteer = volunteerService.saveVolunteer(volunteerToSave);
+        console.log(volunteerToSave);
       } else {
         volunteerToSave = await volunteerService.saveVolunteer(volunteerToSave);
-        console.log({ volunteerToSave });
       }
+      console.log(updatedVolunteer)
       dispatch({ type, volunteer: volunteerToSave });
+      return updatedVolunteer
     } catch (err) {
       console.log('error adding volunteer', volunteerToSave);
       console.error(err);

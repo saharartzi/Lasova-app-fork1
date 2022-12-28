@@ -14,6 +14,7 @@ export function authReducer(state = initialState, action) {
   switch (type) {
     case USER_LOADED:
       const userData = localStorage.getItem('user');
+      console.log("USER LOADED - token:", state.token)
       if (userData) {
         return {
           ...state,
@@ -26,6 +27,7 @@ export function authReducer(state = initialState, action) {
     case LOGIN_SUCCESS:
       const user = decode(payload);
       accessTokenService.setToken(payload);
+      console.log("LOGIN_SUCCESS - token:", state.token)
       storageService.setItem('LOGGED_IN_USER', user);
       localStorage.setItem('user', JSON.stringify(user));
       return {
@@ -39,6 +41,7 @@ export function authReducer(state = initialState, action) {
     case LOGOUT:
       localStorage.removeItem('user');
       accessTokenService.removeToken();
+      console.log("LOGOUT - token:", state.token)
       return {
         ...state,
         token: null,

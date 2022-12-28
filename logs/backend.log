@@ -321,3 +321,115 @@
 12/6/2022, 1:51:43 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 12/6/2022, 1:53:41 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 12/6/2022, 1:58:08 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+10.12.2022, 22:43:35 - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+10.12.2022, 22:43:35 - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+11.12.2022, 0:00:49 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 0:34:35 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 0:36:04 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 0:37:19 - ERROR - failed to fetch voluntterMongooseError: Operation `volunteers.findOne()` buffering timed out after 10000ms 
+11.12.2022, 0:37:23 - ERROR - failed to fetch voluntterMongooseError: Operation `volunteers.findOne()` buffering timed out after 10000ms 
+11.12.2022, 0:40:30 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 0:42:25 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 0:43:06 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 0:46:21 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 0:47:16 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 0:51:00 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 0:58:42 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 1:00:50 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 1:09:17 - ERROR - failed to fetch voluntterMongooseError: Operation `volunteers.findOne()` buffering timed out after 10000ms 
+11.12.2022, 1:09:20 - ERROR - failed to fetch voluntterMongooseError: Operation `volunteers.findOne()` buffering timed out after 10000ms 
+11.12.2022, 1:10:01 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 1:11:15 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 1:13:22 - ERROR - failed to fetch voluntterMongooseError: Operation `volunteers.findOne()` buffering timed out after 10000ms 
+11.12.2022, 1:13:34 - ERROR - failed to fetch voluntterMongooseError: Operation `volunteers.findOne()` buffering timed out after 10000ms 
+11.12.2022, 1:14:20 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 1:16:29 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+11.12.2022, 1:21:52 - ERROR - failed to fetch voluntterMongooseError: Operation `volunteers.findOne()` buffering timed out after 10000ms 
+15.12.2022, 20:47:52 - ERROR - failed to fetch volunteersMongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-01.nnqvqex.mongodb.net 
+22.12.2022, 21:42:32 - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+22.12.2022, 21:42:32 - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+26.12.2022, 20:44:56 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:44:56 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:03 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:03 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:03 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:03 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:04 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:04 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:05 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:05 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:06 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+26.12.2022, 20:45:06 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+27.12.2022, 22:35:43 - ERROR - failed to fetch volunteersMongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-02.nnqvqex.mongodb.net 
+27.12.2022, 22:35:51 - ERROR - failed to fetch groupsMongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-02.nnqvqex.mongodb.net 
+27.12.2022, 22:36:13 - ERROR - failed to fetch volunteersMongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-02.nnqvqex.mongodb.net 
+27.12.2022, 22:36:43 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-02.nnqvqex.mongodb.net 
+27.12.2022, 22:36:43 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-02.nnqvqex.mongodb.net 
+27.12.2022, 22:36:46 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-02.nnqvqex.mongodb.net 
+27.12.2022, 22:36:46 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-02.nnqvqex.mongodb.net 
+27.12.2022, 22:36:47 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-02.nnqvqex.mongodb.net 
+27.12.2022, 22:36:47 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-02.nnqvqex.mongodb.net 
+27.12.2022, 22:48:00 - ERROR - failed to fetch volunteersMongooseServerSelectionError: connection <monitor> to 34.242.51.231:27017 closed 
+27.12.2022, 22:48:43 - ERROR - failed to fetch volunteersMongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+27.12.2022, 22:59:27 - ERROR - failed to fetch volunteersMongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+27.12.2022, 22:59:29 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+27.12.2022, 22:59:29 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+27.12.2022, 22:59:48 - ERROR - failed to fetch voluntterMongooseServerSelectionError: connection timed out 
+27.12.2022, 23:00:25 - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+27.12.2022, 23:00:25 - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+27.12.2022, 23:00:30 - ERROR - Error while trying to find user by criteria {
+  "email": "testSignupRequest@gmail.com"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+27.12.2022, 23:00:30 - ERROR - error while trying to login user testSignupRequest@gmail.com | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+27.12.2022, 23:00:34 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+27.12.2022, 23:00:34 - ERROR - error while trying to login user community@lasova.org.il | MongooseError: Operation `users.findOne()` buffering timed out after 10000ms 
+27.12.2022, 23:01:40 - ERROR - failed to fetch voluntterCastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Volunteer" 
+27.12.2022, 23:02:40 - ERROR - failed to fetch voluntterCastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Volunteer" 
+27.12.2022, 23:05:42 - ERROR - failed to fetch voluntterCastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Volunteer" 
+27.12.2022, 23:06:47 - ERROR - Error while trying to find user by criteria {
+  "email": "community@lasova.org.il"
+} | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+27.12.2022, 23:06:47 - ERROR - error while trying to login user community@lasova.org.il | MongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+27.12.2022, 23:07:11 - ERROR - failed to fetch voluntterCastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Volunteer" 
+27.12.2022, 23:13:08 - ERROR - failed to fetch volunteersMongooseServerSelectionError: getaddrinfo ENOTFOUND ac-thrhdqd-shard-00-00.nnqvqex.mongodb.net 
+27.12.2022, 23:34:11 - ERROR - failed to fetch voluntterCastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Volunteer" 
+27.12.2022, 23:47:44 - ERROR - failed to fetch voluntterCastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Volunteer" 
+27.12.2022, 23:51:22 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+27.12.2022, 23:53:16 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+27.12.2022, 23:54:12 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+27.12.2022, 23:55:51 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+28.12.2022, 0:01:50 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+28.12.2022, 0:06:21 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+28.12.2022, 0:07:27 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+28.12.2022, 0:15:58 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+28.12.2022, 0:20:08 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+28.12.2022, 0:26:51 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+28.12.2022, 21:33:20 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
