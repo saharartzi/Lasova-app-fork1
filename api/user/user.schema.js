@@ -17,7 +17,8 @@ const UserSchema = new Schema({
     // validate: [validateEmail, ErrorMessages.InvalidEmail],
     required: false
   },
-  associatedPrograms: [{ type: { _id: String, name: String, email: String } }],
+  //associatedPrograms: [{ type: { _id: String, name: String, email: String } }],
+  associatedPrograms: [], //Naama - for test
   hash: { type: String, required },
   userType: { type: Number, enum: Object.values(UserTypes), required }
 });

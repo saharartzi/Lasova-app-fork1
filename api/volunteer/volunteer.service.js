@@ -56,7 +56,7 @@ async function adminUpdate(volunteer, currentUser) {
   
     // check if the same user who posting
     var volunteerInHisProgram = false
-    if (currentUser.userType === 1) {
+    if (currentUser.userType === 1 || currentUser.userType === 2) {
       Object.values(currentUser.associatedPrograms).forEach(program => {
         //if (originalVolunteer.volunteeringProgram[0] === program["name"]) {
         if (originalVolunteer.volunteeringProgram[0] === program) { //Naama- changed for test
