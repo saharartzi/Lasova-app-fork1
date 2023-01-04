@@ -20,8 +20,16 @@ router.get('/', requirePermissions(UserPermissions.Read.Volunteer), getVolunteer
 /*  Delete Volunteers */
 router.delete('/', requirePermissions(UserPermissions.Edit.Volunteer), removeVolunteers);
 
-router.put('/admin/:volunteerId', requirePermissions(UserPermissions.Edit.Volunteer,UserPermissions.Edit.VolunteerHours), adminUpdateVolunteer); //
-router.put('/volunteer/:volunteerId', requirePermissions(UserPermissions.Edit.VolunteerHours), volunteerUpdateVolunteer);
+router.put(
+  '/admin/:volunteerId',
+  requirePermissions(UserPermissions.Edit.Volunteer, UserPermissions.Edit.VolunteerHours),
+  adminUpdateVolunteer
+); //
+router.put(
+  '/volunteer/:volunteerId',
+  requirePermissions(UserPermissions.Edit.VolunteerHours),
+  volunteerUpdateVolunteer
+);
 
 router.post('/', requirePermissions(UserPermissions.Write.Volunteer), addVolunteer);
 
