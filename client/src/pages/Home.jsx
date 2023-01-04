@@ -1,7 +1,12 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { DebounceInput } from "react-debounce-input";
-import { loadVolunteers, searchVolunteers, filterVolunteersByStatus,saveVolunteer} from '../store/actions/volunteerActions';
+import {
+  loadVolunteers,
+  searchVolunteers,
+  filterVolunteersByStatus,
+  saveVolunteer
+} from '../store/actions/volunteerActions';
 import NewVolunteerModal from '../components/NewVolunteerModal';
 import ProfileVolunteerModal from '../components/ProfileVolunteerModal';
 
@@ -23,7 +28,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Approve from '../components/Approve';
 import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 
-import { BsFillCheckSquareFill } from 'react-icons/bs'
+import { BsFillCheckSquareFill } from 'react-icons/bs';
 // import { ReactComponent as ClearIcon } from '../assets/imgs/icons/close-icon.svg';
 
 const Home = () => {
@@ -38,7 +43,7 @@ const Home = () => {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
   const [volunteerProfileToShow, setVolunteerProfileToShow] = useState({});
   const [dropdownPosition, setDropdownPosition] = useState(null);
-  const [editVolunteer,setEditVolunteer]= useState({
+  const [editVolunteer, setEditVolunteer] = useState({
     ...volunteer
   });
   const [activeFilter, setActiveFilter] = useState('');
@@ -71,7 +76,7 @@ const Home = () => {
   }
 
   const openProfileModal = (volunteer) => {
-    console.log(volunteer)
+    console.log(volunteer);
     setProfileModalOpen(true);
     setVolunteerProfileToShow(volunteer);
   };
@@ -112,7 +117,7 @@ const Home = () => {
         field: 'firstName',
         headerName: 'שם פרטי',
         description: 'שם פרטי',
-        flex:1,
+        flex: 1,
         valueGetter: (params) => `${params.row.firstName}` || '',
         renderCell: (params) => (
           <div className="name-status">
@@ -125,20 +130,20 @@ const Home = () => {
         field: 'lastName',
         headerName: 'שם משפחה',
         description: 'שם משפחה',
-        flex:1,
+        flex: 1,
         valueGetter: (params) => params.row.lastName || ''
       },
       {
         field: 'taz',
         headerName: 'ת.ז',
-        flex:1,
+        flex: 1,
         valueGetter: (params) => params.row.taz || '-'
       },
       {
         field: 'volunteeringProgram.name',
         headerName: 'מסגרת',
         description: 'מסגרת',
-        flex:1,
+        flex: 1,
         renderHeader: () => <FilterableHeaderCell {...getFilterableHeaderCellProps('volunteeringProgram', 'מסגרת')} />,
         valueGetter: (params) => params.row.volunteeringProgram?.name || ''
       },
@@ -146,7 +151,7 @@ const Home = () => {
         field: 'volunteerType',
         headerName: 'מסגרת מפנה',
         description: 'מסגרת מפנה',
-        flex:1,
+        flex: 1,
         renderHeader: () => <FilterableHeaderCell {...getFilterableHeaderCellProps('volunteerType', 'תכנית')} />,
         valueGetter: (params) => {
           if (params.row.scholarship) {
@@ -159,7 +164,7 @@ const Home = () => {
         field: 'volunteerHours',
         headerName: 'שעות מדווחות',
         description: 'שעות מדווחות',
-        flex:0.5,
+        flex: 0.5,
         sortable: false,
         valueFormatter: ({ _id }) => {
           const volunteer = volunteers?.find((volunteer) => volunteer._id === _id);
@@ -187,13 +192,10 @@ const Home = () => {
       {
         field: 'actions',
         type: 'actions',
-        flex:2,
-        headerName: "דיווח שעות אחרון לאישור:",
-        getActions: (params) => 
-        [
-        <Approve row={params.row} approveHours={approveHours}/>,
-      ]
-      },
+        flex: 2,
+        headerName: 'דיווח שעות אחרון לאישור:',
+        getActions: (params) => [<Approve row={params.row} approveHours={approveHours} />]
+      }
     ],
     [getFilterableHeaderCellProps, statuses, volunteers]
   );
@@ -201,43 +203,46 @@ const Home = () => {
     navigate('/login');
   }
   function setStatusFilter(status) {
-    alert(`status has changed to: ${status}`)
+    alert(`status has changed to: ${status}`);
   }
 
-  function approveHours(row) { //naama
-    let hours=row.hours
-    if (!hours || !hours.length) return
-    if (hours[0].verified===true || hours[0].verified==="true") return
-    console.log(hours)
-    let lastHours = hours.shift()
-    let hoursApproval=({...lastHours,verified:true}) 
-    let volHours=[hoursApproval,...hours]
-    row.hours=volHours
-    let currVol={...row,hours:volHours}
-    console.log(currVol,"/n",lastHours,"/n",hoursApproval)
-    setEditVolunteer(currVol)
+  function approveHours(row) {
+    //naama
+
+    let hours = row.hours;
+    if (!hours || !hours.length) return;
+    if (hours[0].verified === true || hours[0].verified === 'true') return;
+    let lastHours = hours.shift();
+    let hoursApproval = { ...lastHours, verified: true };
+    let volHours = [hoursApproval, ...hours];
+
+    row.hours = volHours;
+    let currVol = { ...row, hours: volHours };
+    console.log(currVol, '/n', lastHours, '/n', hoursApproval);
+    setEditVolunteer(currVol);
   }
 
-  useEffect (()=> {
+  useEffect(() => {
     if (editVolunteer) {
-      dispatch(saveVolunteer(editVolunteer,user))
-    console.log(editVolunteer._id)
+      dispatch(saveVolunteer(editVolunteer, user));
+      console.log(editVolunteer._id);
     }
-  },[editVolunteer])
+  }, [editVolunteer]);
 
   return (
     <BasePage
       title="טבלת מתנדבים"
       doSearch={(searchWord) => {
-        dispatch(searchVolunteers(searchWord,undefined));
+        dispatch(searchVolunteers(searchWord, undefined));
       }}
       doExport={() => exportRef.current()}
       onAdd={() => setNewVolModalOpen(true)}
     >
-      <StatusTabs 
-      setStatusFilter={(status) => {
+      <StatusTabs
+        setStatusFilter={(status) => {
           dispatch(searchVolunteers(undefined, status));
-        }}/>
+        }}
+      />
       <BaseTable
         entities={volunteersToShow}
         columns={columns}

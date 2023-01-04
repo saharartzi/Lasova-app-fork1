@@ -1,6 +1,6 @@
 const logger = require('../../services/logger.service');
 const Volunteer = require('./volunteer.schema');
-const {ErrorMessages} = require('../../lib/consts/ErrorMessages')
+const { ErrorMessages } = require('../../lib/consts/ErrorMessages');
 /**
  * Currently acceps isDefault and doReset as params,
  * doReset - flag that indicates whether should restore data to initial value
@@ -52,22 +52,25 @@ async function remove(volunteerIds) {
 
 async function adminUpdate(volunteer, currentUser) {
   try {
-    const originalVolunteer = await Volunteer.findById(volunteer._id)
-  
+    const originalVolunteer = await Volunteer.findById(volunteer._id);
     // check if the same user who posting
-    var volunteerInHisProgram = false
-    if (currentUser.userType === 1 || currentUser.userType === 2) {
-      Object.values(currentUser.associatedPrograms).forEach(program => {
+    var volunteerInHisProgram = false;
+    if (currentUser.userType === 1) {
+      Object.values(currentUser.associatedPrograms).forEach((program) => {
         //if (originalVolunteer.volunteeringProgram[0] === program["name"]) {
-        if (originalVolunteer.volunteeringProgram[0] === program) { //Naama- changed for test
-          volunteerInHisProgram = true
+        if (originalVolunteer.volunteeringProgram[0] === program) {
+          //Naama- changed for test
+          volunteerInHisProgram = true;
         }
-        })
-      };
+      });
+    }
+    if (currentUser.userType === 2) {
+      volunteerInHisProgram = true;
+    }
     if (!volunteerInHisProgram) {
-        throw Error(ErrorMessages.DontHavePermission);
-      }
-    
+      throw Error(ErrorMessages.DontHavePermission);
+    }
+
     const res = await Volunteer.findByIdAndUpdate(volunteer._id, volunteer);
     return res;
   } catch (err) {
@@ -78,44 +81,54 @@ async function adminUpdate(volunteer, currentUser) {
 
 async function volunteerUpdate(volunteer, currentUser) {
   try {
-    const originalVolunteer = await Volunteer.findById(volunteer._id)
+    const originalVolunteer = await Volunteer.findById(volunteer._id);
     // check if the same user who posting
-    checkIfSameUser = query({ email: currentUser.email }).then((response)=>{
+    checkIfSameUser = query({ email: currentUser.email }).then((response) => {
       if (response[0].email !== originalVolunteer.email) {
         throw Error(ErrorMessages.DontHavePermission);
       }
-    })
+    });
+    console.log('volunteer:::::');
+    console.log(volunteer);
 
     // check if volunteer only changed what he have permission to
-    for (const [key,value] of Object.entries(volunteer)) {
-      if (key === 'hours'){
-        value.map((entry, index) => { 
-          console.log(entry);
-        if (originalVolunteer.hours.includes(originalVolunteer.hours[index]) === false && entry['verified'] !== false) {
-          console.log("error in hours entry - Naama", (entry['verified'] !== false))
-          console.log(originalVolunteer.hours,index)
-          throw Error(ErrorMessages.DontHavePermission);
-        } 
-        if (originalVolunteer.hours.includes(originalVolunteer.hours[index]) && entry['verified'] ==! originalVolunteer.hours[index]['verified'] ) {
-          throw Error(ErrorMessages.DontHavePermission);
-        } 
-        if(originalVolunteer.hours.includes(originalVolunteer.hours[index]) && [entry.date,entry.starthour,entry.endhour] !== [
-          originalVolunteer.hours[index]['date'],
-          originalVolunteer.hours[index]['starthour'],
-          originalVolunteer.hours[index]['endhour']] && entry['verified'] !== false) {
+    for (const [key, value] of Object.entries(volunteer)) {
+      if (key === 'hours') {
+        value.map((entry, index) => {
+          if (
+            originalVolunteer.hours.includes(originalVolunteer.hours[index]) === false &&
+            entry['verified'] !== false
+          ) {
             throw Error(ErrorMessages.DontHavePermission);
           }
-       })
-      } else if (value ==! originalVolunteer[key]) {
+          // delete ==> orel
+          // if (
+          //   originalVolunteer.hours.includes(originalVolunteer.hours[index]) &&
+          //   entry['verified'] == !originalVolunteer.hours[index]['verified']
+          // ) {
+
+          //   throw Error(ErrorMessages.DontHavePermission);
+          // }
+          if (
+            originalVolunteer.hours.includes(originalVolunteer.hours[index]) &&
+            [volunteer['hours'][0].date, volunteer['hours'][0].start, volunteer['hours'][0].end] !==
+              [
+                originalVolunteer.hours[index]['date'],
+                originalVolunteer.hours[index]['start'],
+                originalVolunteer.hours[index]['end']
+              ] &&
+            volunteer['hours'][0].verified !== false
+          ) {
+            throw Error(ErrorMessages.DontHavePermission);
+          }
+        });
+      } else if (value == !originalVolunteer[key]) {
         throw Error(ErrorMessages.DontHavePermission);
       }
     }
 
     const res = await Volunteer.findByIdAndUpdate(volunteer._id, volunteer);
     return res;
-    
-  
-  
   } catch (err) {
     logger.error(`error updating volunteer ${volunteer.id}`, err);
     throw err;
