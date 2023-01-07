@@ -75,15 +75,15 @@ const BaseTable = ({
           }}
           pageSize={10}
           rowsPerPageOptions={[10]}
-          getRowHeight={({model,densityFactor}) => {    //Naama - for actions columns
-            console.log(model)
-           if (!(model.hours) || !(model.hours).length) {
+          getRowHeight={({ model, densityFactor }) => {
+            //Naama - for actions columns
+            if (!model.hours || !model.hours.length) {
+              return null;
+            }
+            if (!model.hours[0].verified || model.hours[0].verified === 'false') {
+              return 200 * densityFactor;
+            }
             return null;
-           }
-           if (!model.hours[0].verified || model.hours[0].verified==="false") {    
-           return 200*densityFactor
-          }
-            return null
           }}
         />
       </section>
