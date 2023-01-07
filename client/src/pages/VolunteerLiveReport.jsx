@@ -14,7 +14,7 @@ export default function VolunteerLiveReport() {
   const [btn, setBtn] = useState({ color: '#92CE7F', text: 'התחל' });
 
   const [startTime, setStartTime] = useState(0);
-  const [timeToShow, setTimeToShow] = useState(new Date().toString().split(' ')[4]);
+  const [timeToShow, setTimeToShow] = useState();
   const [endTime, setEndTime] = useState(null);
 
   const { isAuthenticated, user } = useSelector((state) => state.authReducer);
@@ -36,7 +36,6 @@ export default function VolunteerLiveReport() {
   });
   let reportedHours = { date: '', start: '', end: '', verified: false };
   let hours = [];
-  //console.log(hours)
 
   const toggleBtn = () => {
     setIsStarted(!isStarted);
