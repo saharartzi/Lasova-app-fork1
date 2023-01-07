@@ -119,9 +119,9 @@ export default function VolunteerLiveReport() {
               </p>
               <div className="hours">
                 <p className="start-hour-text">שעת התחלה</p>
-                <p>{new Date(volunteer.hours[0].start).toString().split(' ')[4]}</p>
+                <p>{new Date(volunteer.hours[0]?.start).toString().split(' ')[4]}</p>
                 <p className="end-hour-text">שעת סיום</p>
-                <p>{new Date(volunteer.hours[0].end).toString().split(' ')[4]}</p>
+                <p>{new Date(volunteer.hours[0]?.end).toString().split(' ')[4]}</p>
               </div>
               <button className="confirm-btn">אישור</button>
             </div>
