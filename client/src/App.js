@@ -13,10 +13,9 @@ import Footer from './components/Footer';
 function App() {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.authReducer);
-  
+
   //naama - need to check why only works with var, also why not getting back to login page when needed
-  if (user && user.userType===0) {
-    console.log("type:",user.userType)
+  if (user && user.userType === 0) {
     var isVolunteer = true;
   } else {
     var isVolunteer = false;
@@ -28,29 +27,53 @@ function App() {
     }
   }, []);
 
-
   //naama-for test only
   //let isMobile=true;
 
   return (
     <div className="top-container flex column">
-  
       <div id="dropdown-root"></div>
       {/* <Header /> */}
-   
+
       <div className="content-wrapper flex">
         {isAuthenticated && user && !isVolunteer ? <Sidebar /> : null}
         <main>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/groups" element={isAuthenticated ? (!isVolunteer ? <GroupsPage /> : <Navigate replace to="/report"/>) : <Navigate replace to="/login" />} />
+            <Route
+              path="/groups"
+              element={
+                isAuthenticated ? (
+                  !isVolunteer ? (
+                    <GroupsPage />
+                  ) : (
+                    <Navigate replace to="/report" />
+                  )
+                ) : (
+                  <Navigate replace to="/login" />
+                )
+              }
+            />
             <Route path="/report" element={isVolunteer ? <VolunteerLiveReport /> : <Navigate replace to="/login" />} />
-            <Route path="/" element={isAuthenticated ? (!isVolunteer ? <Home /> : <Navigate replace to="/report"/>) : <Navigate replace to="/login" />} />
+            <Route
+              path="/"
+              element={
+                isAuthenticated ? (
+                  !isVolunteer ? (
+                    <Home />
+                  ) : (
+                    <Navigate replace to="/report" />
+                  )
+                ) : (
+                  <Navigate replace to="/login" />
+                )
+              }
+            />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
       </div>
-      {isVolunteer? null : <Footer />}
+      {isVolunteer ? null : <Footer />}
     </div>
   );
 }

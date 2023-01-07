@@ -10,6 +10,7 @@ import Loader from '../components/Loader';
 
 export default function VolunteerLiveReport() {
   const [isStarted, setIsStarted] = useState(false);
+  const [forgotToReport, setForgotToReport] = useState(false);
   const [btn, setBtn] = useState({ color: '#92CE7F', text: 'התחל' });
 
   const [startTime, setStartTime] = useState(0);
@@ -42,7 +43,7 @@ export default function VolunteerLiveReport() {
   };
 
   useEffect(() => {
-    console.log('volunteer: ', volunteer);
+    // console.log('volunteer: ', volunteer);
     if (volunteer) {
       hours = [...JSON.parse(JSON.stringify(volunteer.hours))];
     }
@@ -123,7 +124,7 @@ export default function VolunteerLiveReport() {
                 <p className="end-hour-text">שעת סיום</p>
                 <p>{new Date(volunteer.hours[0]?.end).toString().split(' ')[4]}</p>
               </div>
-              <button className="confirm-btn">אישור</button>
+              {forgotToReport && <button className="confirm-btn">אישור</button>}
             </div>
           )}
 

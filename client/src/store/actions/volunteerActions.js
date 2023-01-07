@@ -24,7 +24,7 @@ export function loadVolunteers(email = null) {
       if (email) {
         const filteredVolunteers = await volunteerService.query({ email });
         const volunteerData = filteredVolunteers[0];
-        console.log('volunteerData:', volunteerData);
+        // console.log('volunteerData:', volunteerData);
         //const volunteerData = volunteers.find((volunteer)=> volunteer.email=email) //naama
         dispatch({ type: 'LOAD_VOLUNTEER', volunteerData }); //naama
       }
@@ -92,22 +92,14 @@ export function saveVolunteer(volunteerToSave, user) {
     try {
       const type = volunteerToSave._id ? 'UPDATE_VOLUNTEER' : 'ADD_VOLUNTEER';
 
-      console.log('type:');
-      console.log(type);
       if (type === 'UPDATE_VOLUNTEER') {
-        console.log('with the type!!!');
         var updatedVolunteer = volunteerService.saveVolunteer(volunteerToSave, user); //Naama //why???
-        console.log('volunteerToSave');
-        console.log(volunteerToSave);
       } else {
         volunteerToSave = await volunteerService.saveVolunteer(volunteerToSave);
       }
-      console.log('updatedVolunteer');
-      console.log(updatedVolunteer);
       dispatch({ type, volunteer: volunteerToSave });
       return updatedVolunteer;
     } catch (err) {
-      console.log('error adding volunteer', volunteerToSave);
       console.error(err);
     }
   };
