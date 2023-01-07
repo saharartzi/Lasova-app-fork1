@@ -111,17 +111,17 @@ export default function VolunteerLiveReport() {
               <p className="date-text">תאריך הפעילות</p>
               <p>
                 {/* to fix new user hours - orel */}
-                {new Date(volunteer.hours[0].start).getDate() +
+                {new Date(volunteer.hours[0]?.start).getDate() +
                   '.' +
-                  (+new Date(volunteer.hours[0].start).getMonth() + 1) +
+                  (+new Date(volunteer.hours[0]?.start).getMonth() + 1) +
                   '.' +
-                  new Date(volunteer.hours[0].start).getFullYear()}
+                  new Date(volunteer.hours[0]?.start).getFullYear()}
               </p>
               <div className="hours">
                 <p className="start-hour-text">שעת התחלה</p>
-                <p>{new Date(volunteer.hours[0].start).toString().split(' ')[4]}</p>
+                <p>{new Date(volunteer.hours[0]?.start).toString().split(' ')[4]}</p>
                 <p className="end-hour-text">שעת סיום</p>
-                <p>{new Date(volunteer.hours[0].end).toString().split(' ')[4]}</p>
+                <p>{new Date(volunteer.hours[0]?.end).toString().split(' ')[4]}</p>
               </div>
               <button className="confirm-btn">אישור</button>
             </div>
