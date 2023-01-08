@@ -16,6 +16,9 @@ export default function VolunteerLiveReport() {
   const [timeToShow, setTimeToShow] = useState(new Date().toString().split(' ')[4]);
   const [endTime, setEndTime] = useState(null);
 
+  const [forgotToReport,setForgotToReport] = useState(false);
+  const [formValues,setFormValues]=useState({date:"",startHour:"",endHour:"",verified:false});
+
   const { isAuthenticated, user } = useSelector((state) => state.authReducer);
 
   const dispatch = useDispatch();
@@ -40,6 +43,28 @@ export default function VolunteerLiveReport() {
   const toggleBtn = () => {
     setIsStarted(!isStarted);
   };
+
+  const reportManually = () => {
+    setForgotToReport(true)
+  }
+
+  const handleChange = (event) => {
+    const {name,value} = event.target
+    setFormValues((prevState) => {return {...prevState,[name]:value}})
+  }
+
+  const confirmHours = () => {
+    let {date,startHour,endHour} = formValues
+    if (date && startHour && endHour) {
+      startHour=new Date(`${date} ${endHour}`).getTime()
+      endHour=new Date(`${date} ${endHour}`).getTime()
+      date=new Date(date).getTime()
+      let timeValues={date,start:startHour,end:endHour,verified:false}
+      hours = [timeValues, ...volunteer.hours];
+      setEditVolunteer({ ...volunteer, hours });
+    }
+
+  }
 
   useEffect(() => {
     console.log('volunteer: ', volunteer);
@@ -84,6 +109,8 @@ export default function VolunteerLiveReport() {
     }
   }, [editVolunteer]);
 
+
+
   return (
     <>
       {volunteer && (
@@ -92,38 +119,45 @@ export default function VolunteerLiveReport() {
           <div className="logo-img">
             <img src={Logo} alt="laSova" className="logo-mobile" />
           </div>
-          {!endTime && <h2 className="header">היי {user.firstname}, חיכינו רק לך!</h2>}
-          {!endTime && (
+          {(!isStarted && !endTime && !forgotToReport) && <h2 className="header">היי {user.firstname}, חיכינו רק לך!</h2>}
+          {(isStarted && !forgotToReport) && <h2 className="header">תודה שהשתתפת</h2>}
+          {(!endTime && !forgotToReport) && (
             <div className="report-form">
               <p className="report-program">{volunteer.groupName}</p>
               <button className="report-btn" style={{ backgroundColor: btn.color }} onClick={toggleBtn}>
                 {btn.text}
               </button>
-              {!isStarted && !endTime && <p className="report-text">שכחת לדווח?</p>}
+              {!isStarted && !endTime && <button className="report-text" onClick={reportManually}>שכחת לדווח?</button>}
               {isStarted && <p className="report-text">{timeToShow}</p>}
               {!isStarted && endTime && <p className="report-text">{timeToShow}</p>}
             </div>
           )}
-          {endTime && <h2 className="header">אז מה היה לנו?</h2>}
-          {endTime && (
+          {(endTime || forgotToReport) && <h2 className="header">אז מה היה לנו?</h2>}
+          {(endTime || forgotToReport) && (
             <div className="report-form">
               <p className="report-program">{volunteer.groupName}</p>
+              <div className='input-date'>
               <p className="date-text">תאריך הפעילות</p>
-              <p>
-                {/* to fix new user hours - orel */}
-                {new Date(volunteer.hours[0]?.start).getDate() +
-                  '.' +
+              <input type={endTime? "text": "date"} name="date" onChange={(ev)=>handleChange(ev)} 
+                  placeholder={endTime? (new Date(volunteer.hours[0]?.start).getDate() +
+                  '/' +
                   (+new Date(volunteer.hours[0]?.start).getMonth() + 1) +
-                  '.' +
-                  new Date(volunteer.hours[0]?.start).getFullYear()}
-              </p>
-              <div className="hours">
-                <p className="start-hour-text">שעת התחלה</p>
-                <p>{new Date(volunteer.hours[0]?.start).toString().split(' ')[4]}</p>
-                <p className="end-hour-text">שעת סיום</p>
-                <p>{new Date(volunteer.hours[0]?.end).toString().split(' ')[4]}</p>
+                  '/' +
+                  new Date(volunteer.hours[0]?.start).getFullYear()) : ""}
+                  />
               </div>
-              <button className="confirm-btn">אישור</button>
+               
+              <div className="hours">
+                <div className='input-start'>
+                <p className="start-hour-text">שעת התחלה</p>
+                <input type="text" name="startHour" placeholder={endTime? new Date(volunteer.hours[0]?.start).toString().split(' ')[4] : ""} onChange={(ev)=>handleChange(ev)}/>
+                </div>
+                <div className='input-end'>
+                <p className="end-hour-text">שעת סיום</p>
+                <input type="text" name="endHour" placeholder={endTime? new Date(volunteer.hours[0]?.end).toString().split(' ')[4] : ""} onChange={(ev)=>handleChange(ev)}/>
+                </div>
+              </div>
+              {forgotToReport && <button className="confirm-btn" onClick={confirmHours}>אישור</button>}
             </div>
           )}
 
