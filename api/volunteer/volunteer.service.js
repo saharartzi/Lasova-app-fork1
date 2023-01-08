@@ -88,8 +88,6 @@ async function volunteerUpdate(volunteer, currentUser) {
         throw Error(ErrorMessages.DontHavePermission);
       }
     });
-    console.log('volunteer:::::');
-    console.log(volunteer);
 
     // check if volunteer only changed what he have permission to
     for (const [key, value] of Object.entries(volunteer)) {

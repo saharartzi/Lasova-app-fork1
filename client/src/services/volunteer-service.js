@@ -18,19 +18,15 @@ function saveVolunteer(volunteer, user = '') {
 }
 
 function _updateVolunteer(volunteer, user) {
-  console.log('update id:', volunteer._id);
   if (!user || volunteer.email === user.email) {
-    console.log('????????');
     return httpService.put(`${BASE_URL}/${BASE_URL}/${volunteer._id}`, volunteer);
   } else {
-    console.log('update vol by admin');
     return httpService.put(`${BASE_URL}/admin/${volunteer._id}`, volunteer);
   }
 }
 
 //naama
 function getVolunteerById(volunteerId) {
-  console.log('id to get:', volunteerId);
   return httpService.get(`${BASE_URL}/${volunteerId}`, volunteerId);
 }
 

@@ -13,7 +13,7 @@ export default function VolunteerLiveReport() {
   const [btn, setBtn] = useState({ color: '#92CE7F', text: 'התחל' });
 
   const [startTime, setStartTime] = useState(0);
-  const [timeToShow, setTimeToShow] = useState(new Date().toString().split(' ')[4]);
+  const [timeToShow, setTimeToShow] = useState();
   const [endTime, setEndTime] = useState(null);
 
   const [forgotToReport,setForgotToReport] = useState(false);
@@ -38,7 +38,6 @@ export default function VolunteerLiveReport() {
   });
   let reportedHours = { date: '', start: '', end: '', verified: false };
   let hours = [];
-  //console.log(hours)
 
   const toggleBtn = () => {
     setIsStarted(!isStarted);
@@ -67,7 +66,7 @@ export default function VolunteerLiveReport() {
   }
 
   useEffect(() => {
-    console.log('volunteer: ', volunteer);
+    // console.log('volunteer: ', volunteer);
     if (volunteer) {
       hours = [...JSON.parse(JSON.stringify(volunteer.hours))];
     }

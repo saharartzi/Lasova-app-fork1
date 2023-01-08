@@ -21,7 +21,6 @@ function EditGroupModal({ open, setOpen, group }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('..will submit:', newGroup);
     dispatch(saveGroup(newGroup));
     setNewGroup(newGroup);
     setOpen(false);

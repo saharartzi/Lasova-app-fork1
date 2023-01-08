@@ -6,7 +6,6 @@ const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/' : '//localhost:
 var axios = Axios.create({});
 axios.interceptors.request.use((config) => {
   const accessToken = accessTokenService.getToken();
-  console.log("TOKEN:",accessToken);
   config.headers['Authorization'] = `Bearer ${accessToken}`;
   return config;
 });
@@ -23,7 +22,7 @@ export const httpService = {
   },
   delete(endpoint, data) {
     return ajax(endpoint, 'DELETE', data);
-  },
+  }
 };
 
 async function ajax(endpoint, method = 'GET', data = null) {
@@ -32,7 +31,7 @@ async function ajax(endpoint, method = 'GET', data = null) {
       url: `${BASE_URL}${endpoint}`,
       method,
       data,
-      params: method === 'GET' ? data : null,
+      params: method === 'GET' ? data : null
     });
     return res.data;
   } catch (err) {
