@@ -533,3 +533,25 @@
 1/4/2023, 10:04:27 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 1/4/2023, 10:05:59 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 1/7/2023, 11:48:18 PM - ERROR - couldnt save volunteer | MongoNetworkError: connection 3 to 18.200.114.186:27017 closed 
+1/8/2023, 9:00:39 PM - ERROR - error while trying to login user orela231089@gmail.com | Error: Invalid username / email 
+1/8/2023, 9:00:40 PM - ERROR - error while trying to login user orela231089@gmail.com | Error: Invalid username / email 
+1/8/2023, 9:00:48 PM - ERROR - error while trying to login user orela231089@gmail.com | Error: Invalid username / email 
+1/8/2023, 9:16:15 PM - ERROR - error while trying to login user orel231089@gmail.com | Error: Invalid username / email 
+1/8/2023, 9:16:24 PM - ERROR - error while trying to login user orel231089@gmail.com | Error: Invalid username / email 
+1/8/2023, 9:16:43 PM - ERROR - error while trying to login user orel231089@gmail.com | Error: Invalid username / email 
+1/8/2023, 9:34:33 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:36:49 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:37:02 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:42:48 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:43:22 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:44:17 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:45:22 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:46:22 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:48:21 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:49:18 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:50:35 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:52:14 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:52:30 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:53:33 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:58:10 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+1/8/2023, 9:59:24 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 

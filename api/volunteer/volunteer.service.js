@@ -80,9 +80,16 @@ async function adminUpdate(volunteer, currentUser) {
 }
 
 async function volunteerUpdate(volunteer, currentUser) {
+  console.log('volunteer');
+  console.log(volunteer);
+
   try {
     const originalVolunteer = await Volunteer.findById(volunteer._id);
     // check if the same user who posting
+    console.log('originalVolunteer');
+    console.log('originalVolunteer');
+    console.log(originalVolunteer);
+
     checkIfSameUser = query({ email: currentUser.email }).then((response) => {
       if (response[0].email !== originalVolunteer.email) {
         throw Error(ErrorMessages.DontHavePermission);
