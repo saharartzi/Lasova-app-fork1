@@ -10,6 +10,8 @@ const BASE_URL = 'volunteer';
 
 //function query({ isDefault, doReset } = {}) {
 function query(filter = {}) {
+  console.log('filter');
+  console.log(filter);
   return httpService.get(`${BASE_URL}`, filter);
 }
 

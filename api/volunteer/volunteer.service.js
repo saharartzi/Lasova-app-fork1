@@ -6,9 +6,17 @@ const { ErrorMessages } = require('../../lib/consts/ErrorMessages');
  * doReset - flag that indicates whether should restore data to initial value
  * isDefault - flag that indicates whether should use initial data */
 async function query(filter = {}) {
+  console.log('query in the back');
+  console.log('filter');
+  console.log(filter);
   try {
     const criteria = _buildVolunteerQueryFilter(filter);
+    console.log('criteria');
+    console.log(criteria);
     const volunteers = await Volunteer.find(criteria);
+    console.log('volunteerscriteria');
+    console.log(volunteers);
+
     return volunteers;
   } catch (err) {
     logger.error('failed to fetch volunteers' + err);
@@ -52,13 +60,17 @@ async function remove(volunteerIds) {
 
 async function adminUpdate(volunteer, currentUser) {
   try {
+    console.log('adminUpdate');
     const originalVolunteer = await Volunteer.findById(volunteer._id);
     // check if the same user who posting
     var volunteerInHisProgram = false;
     if (currentUser.userType === 1) {
+      console.log('currentUser.userType === 1');
       Object.values(currentUser.associatedPrograms).forEach((program) => {
-        //if (originalVolunteer.volunteeringProgram[0] === program["name"]) {
-        if (originalVolunteer.volunteeringProgram[0] === program) {
+        // orel enter this
+        if (originalVolunteer.volunteeringProgram[0] === program['_id']) {
+          // if (originalVolunteer.volunteeringProgram[0] === program['name']) { //orel delete this
+          // if (originalVolunteer.volunteeringProgram[0] === program) {
           //Naama- changed for test
           volunteerInHisProgram = true;
         }
@@ -87,25 +99,37 @@ async function volunteerUpdate(volunteer, currentUser) {
     const originalVolunteer = await Volunteer.findById(volunteer._id);
     // check if the same user who posting
     console.log('originalVolunteer');
-    console.log('originalVolunteer');
     console.log(originalVolunteer);
 
     checkIfSameUser = query({ email: currentUser.email }).then((response) => {
       if (response[0].email !== originalVolunteer.email) {
+        console.log('test0');
+
         throw Error(ErrorMessages.DontHavePermission);
       }
     });
-
+    console.log('for here');
     // check if volunteer only changed what he have permission to
+
     for (const [key, value] of Object.entries(volunteer)) {
+      console.log('value');
+      console.log(value);
+      console.log(originalVolunteer[key]);
       if (key === 'hours') {
         value.map((entry, index) => {
-          if (
-            originalVolunteer.hours.includes(originalVolunteer.hours[index]) === false &&
-            entry['verified'] !== false
-          ) {
-            throw Error(ErrorMessages.DontHavePermission);
-          }
+          console.log('entry');
+          console.log(entry);
+          console.log('originalVolu');
+          console.log(originalVolunteer.hours);
+          // if (
+          //   // ask namma why????
+          //   originalVolunteer.hours.includes(originalVolunteer.hours[index]) === false &&
+          //   entry['verified'] !== false
+          // ) {
+          //   console.log('test1');
+
+          //   throw Error(ErrorMessages.DontHavePermission);
+          // }
           // delete ==> orel
           // if (
           //   originalVolunteer.hours.includes(originalVolunteer.hours[index]) &&
@@ -124,10 +148,16 @@ async function volunteerUpdate(volunteer, currentUser) {
               ] &&
             volunteer['hours'][0].verified !== false
           ) {
+            console.log('test2');
+
             throw Error(ErrorMessages.DontHavePermission);
           }
         });
       } else if (value == !originalVolunteer[key]) {
+        console.log('test3');
+        console.log(value);
+        console.log(originalVolunteer[key]);
+
         throw Error(ErrorMessages.DontHavePermission);
       }
     }
@@ -142,19 +172,22 @@ async function volunteerUpdate(volunteer, currentUser) {
 
 const _buildVolunteerQueryFilter = (query) => {
   const filter = {};
-  console.log('query: ', query);
   Object.keys(query).forEach((currQueryKey) => {
     switch (currQueryKey) {
       case 'volunteeringPrograms':
         filter['volunteeringProgram._id'] = {
-          $in: query.volunteeringPrograms?.map((vp) => vp._id)
+          $in: query.volunteeringPrograms?.map((vp) => {
+            return vp._id;
+          })
         };
+        console.log(filter);
         break;
       default:
         filter[currQueryKey] = query[currQueryKey];
         break;
     }
   });
+
   return filter;
 };
 

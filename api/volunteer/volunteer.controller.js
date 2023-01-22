@@ -9,12 +9,19 @@ const authenticate = require('../../middlewares/authentication.middleware');
 async function getVolunteers(req, res) {
   try {
     const queryOptions = req.query;
-    // console.log('req.query: ', req.query);
+    console.log('getVolunteers');
+    console.log('req.query');
+    console.log(req.query);
+
+    console.log('req.query: ', req.query);
     if (req.user.userType === UserTypes.ProgramManager) {
+      console.log('hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
       queryOptions.volunteeringPrograms = req.user.associatedPrograms;
     }
+    console.log('queryOptions');
+    console.log(queryOptions);
     const volunteers = await query(queryOptions);
-    // console.log('volunteers: ', volunteers);
+    console.log('volunteers: ', volunteers);
     res.send(volunteers);
   } catch (err) {
     res.status(500).send({ err: 'Failed to fetch volunteers' });
@@ -80,6 +87,7 @@ async function addVolunteer(req, res) {
 }
 
 async function getVolunteerById(req, res) {
+  console.log('getVolunteerById');
   try {
     const { volunteerId } = req.params;
     const volunteer = await getById(volunteerId);

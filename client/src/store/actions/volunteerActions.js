@@ -17,9 +17,14 @@ const STORAGE_KEY = 'volunteers';
 
 export function loadVolunteers(email = null) {
   //naama-added email to try to get volunteer by user details
+  console.log('email');
+  console.log(email);
   return async (dispatch) => {
     try {
+      console.log('here?    ');
       const volunteers = await volunteerService.query();
+      console.log('volunteers');
+      console.log(volunteers);
       dispatch({ type: 'LOAD_VOLUNTEERS', volunteers });
       if (email) {
         const filteredVolunteers = await volunteerService.query({ email });
