@@ -5,6 +5,7 @@ import { volunteerReducer } from './reducers/volunteerReducer';
 import { groupReducer } from './reducers/groupReducer';
 import { systemReducer } from './reducers/systemReducer';
 import { authReducer } from './reducers/auth';
+import { volunteeringProgramReducer } from './reducers/volunteeringProgramReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   groupReducer,
   systemReducer,
   authReducer,
+  volunteeringProgramReducer
 });
 
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));

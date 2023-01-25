@@ -105,6 +105,7 @@ export default function VolunteerLiveReport() {
 
   useEffect(() => {
     if (volunteer) {
+      console.log('saveVolunteer in live report');
       volunteer = dispatch(saveVolunteer(editVolunteer));
     }
   }, [editVolunteer]);

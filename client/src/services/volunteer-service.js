@@ -33,6 +33,7 @@ function getVolunteerById(volunteerId) {
 }
 
 async function _addVolunteer(volunteer) {
+  console.log('_addVolunteer');
   const { files, ...volunteerJSON } = volunteer;
   const formData = new FormData();
   const json = JSON.stringify(volunteerJSON);

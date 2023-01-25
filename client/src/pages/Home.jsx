@@ -225,6 +225,8 @@ const Home = () => {
 
   useEffect(() => {
     if (editVolunteer) {
+      console.log('saveVolunteer in home');
+
       dispatch(saveVolunteer(editVolunteer, user));
       console.log(editVolunteer._id);
     }

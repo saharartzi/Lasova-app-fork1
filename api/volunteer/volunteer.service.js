@@ -98,8 +98,6 @@ async function volunteerUpdate(volunteer, currentUser) {
   try {
     const originalVolunteer = await Volunteer.findById(volunteer._id);
     // check if the same user who posting
-    console.log('originalVolunteer');
-    console.log(originalVolunteer);
 
     checkIfSameUser = query({ email: currentUser.email }).then((response) => {
       if (response[0].email !== originalVolunteer.email) {
@@ -108,19 +106,14 @@ async function volunteerUpdate(volunteer, currentUser) {
         throw Error(ErrorMessages.DontHavePermission);
       }
     });
-    console.log('for here');
     // check if volunteer only changed what he have permission to
 
     for (const [key, value] of Object.entries(volunteer)) {
-      console.log('value');
-      console.log(value);
       console.log(originalVolunteer[key]);
       if (key === 'hours') {
         value.map((entry, index) => {
           console.log('entry');
           console.log(entry);
-          console.log('originalVolu');
-          console.log(originalVolunteer.hours);
           // if (
           //   // ask namma why????
           //   originalVolunteer.hours.includes(originalVolunteer.hours[index]) === false &&

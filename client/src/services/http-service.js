@@ -29,6 +29,7 @@ async function ajax(endpoint, method = 'GET', data = null) {
   try {
     console.log('ajax');
     console.log(endpoint);
+    console.log(method);
     const res = await axios({
       url: `${BASE_URL}${endpoint}`,
       method,
