@@ -52,6 +52,7 @@ const Home = () => {
     volunteeringProgram: '',
     volunteerType: ''
   });
+  console.log(user);
   const filterOptions = useMemo(() => {
     if (!volunteers) return {};
     const retval = volunteers.reduce((acc, curr) => {

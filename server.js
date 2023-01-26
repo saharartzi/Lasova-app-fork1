@@ -33,7 +33,7 @@ mongoose.connect(process.env.DB_URI, {
 });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
-db.once('open', function() {
+db.once('open', function () {
   console.log('Succesfully connected to db', db.db.databaseName);
 });
 
@@ -41,6 +41,7 @@ app.use('/api/volunteer', require('./api/volunteer/volunteer.routes'));
 app.use('/api/group', require('./api/group/group.routes'));
 app.use('/api/auth', require('./api/auth/auth.routes'));
 app.use('/api/user', require('./api/user/user.routes'));
+app.use('/api/volunteering-program', require('./api/volunteering-program/volunteering-program.routes'));
 
 app.get('/**', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));

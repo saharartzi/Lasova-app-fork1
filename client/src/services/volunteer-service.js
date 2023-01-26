@@ -10,6 +10,8 @@ const BASE_URL = 'volunteer';
 
 //function query({ isDefault, doReset } = {}) {
 function query(filter = {}) {
+  console.log('filter');
+  console.log(filter);
   return httpService.get(`${BASE_URL}`, filter);
 }
 
@@ -31,6 +33,7 @@ function getVolunteerById(volunteerId) {
 }
 
 async function _addVolunteer(volunteer) {
+  console.log('_addVolunteer');
   const { files, ...volunteerJSON } = volunteer;
   const formData = new FormData();
   const json = JSON.stringify(volunteerJSON);
