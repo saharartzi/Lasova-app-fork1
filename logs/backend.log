@@ -533,7 +533,6 @@
 1/4/2023, 10:04:27 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 1/4/2023, 10:05:59 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 1/7/2023, 11:48:18 PM - ERROR - couldnt save volunteer | MongoNetworkError: connection 3 to 18.200.114.186:27017 closed 
-<<<<<<< HEAD
 8.1.2023, 21:33:26 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 8.1.2023, 21:33:54 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 8.1.2023, 21:34:03 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
@@ -541,7 +540,6 @@
 8.1.2023, 21:36:55 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 8.1.2023, 21:38:17 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 24.1.2023, 10:22:03 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
-=======
 1/8/2023, 9:00:39 PM - ERROR - error while trying to login user orela231089@gmail.com | Error: Invalid username / email 
 1/8/2023, 9:00:40 PM - ERROR - error while trying to login user orela231089@gmail.com | Error: Invalid username / email 
 1/8/2023, 9:00:48 PM - ERROR - error while trying to login user orela231089@gmail.com | Error: Invalid username / email 
@@ -607,4 +605,3 @@
 1/24/2023, 10:25:55 AM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 1/24/2023, 10:25:58 AM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 1/24/2023, 10:38:46 AM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
->>>>>>> 18d0b54318c5e235e628aa041431c4e19a49d09e
