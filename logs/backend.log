@@ -533,3 +533,10 @@
 1/4/2023, 10:04:27 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 1/4/2023, 10:05:59 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 1/7/2023, 11:48:18 PM - ERROR - couldnt save volunteer | MongoNetworkError: connection 3 to 18.200.114.186:27017 closed 
+8.1.2023, 21:33:26 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+8.1.2023, 21:33:54 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+8.1.2023, 21:34:03 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+8.1.2023, 21:36:53 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+8.1.2023, 21:36:55 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+8.1.2023, 21:38:17 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+24.1.2023, 10:22:03 - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 

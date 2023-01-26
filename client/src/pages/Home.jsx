@@ -75,6 +75,8 @@ const Home = () => {
     return retval;
   }
 
+  let isEdited=false;
+  
   const openProfileModal = (volunteer) => {
     console.log(volunteer);
     setProfileModalOpen(true);
@@ -219,13 +221,15 @@ const Home = () => {
     row.hours = volHours;
     let currVol = { ...row, hours: volHours };
     console.log(currVol, '/n', lastHours, '/n', hoursApproval);
+    isEdited=true;
     setEditVolunteer(currVol);
   }
 
   useEffect(() => {
-    if (editVolunteer) {
+    if (isEdited) {
       dispatch(saveVolunteer(editVolunteer, user));
       console.log(editVolunteer._id);
+      isEdited=false;
     }
   }, [editVolunteer]);
 
