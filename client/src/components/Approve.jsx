@@ -15,7 +15,7 @@ export default function Approve({ row, approveHours }) {
 
   function calculateDuration(start, end) {
     if (isNaN(start) || isNaN(end)) {
-      return 'Invalid Input';
+      return 'Invalid input';
     }
     const duration = end - start;
     const hours = Math.floor(duration / (1000 * 60 * 60));
