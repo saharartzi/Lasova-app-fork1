@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { saveVolunteer } from '../store/actions/volunteerActions';
+import { loadGroups } from '../store/actions/groupActions';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextareaAutosize from '@mui/material/TextareaAutosize';

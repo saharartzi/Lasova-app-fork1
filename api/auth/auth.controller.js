@@ -3,7 +3,7 @@ const { UserTypes } = require('../../lib/consts/UserType.enum');
 const { addProgram } = require('../../lib/manager-program-map');
 const authService = require('./auth.service');
 
-const signup = async(req, res) => {
+const signup = async (req, res) => {
   try {
     const user = req.body;
     if (user.userType === UserTypes.ProgramManager) {
@@ -19,12 +19,12 @@ const signup = async(req, res) => {
   }
 };
 
-const login = async(req, res) => {
+const login = async (req, res) => {
   try {
     const user = req.body;
     const authToken = await authService.login(user);
     res.json({ authToken });
-    console.log(authToken)
+    // console.log(authToken)
   } catch (err) {
     if (err.message === ErrorMessages.InvalidCredentials) {
       return res.status(400).send(err.message);

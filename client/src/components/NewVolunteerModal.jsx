@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadVolunteeringProgram } from '../store/actions/volunteeringProgramAction';
 import { saveVolunteer } from '../store/actions/volunteerActions';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 // import { UploadVolunteerFilesButton } from './UploadButton';
 const VolunteerObj = {
   taz: '',
-  volunteeringProgram: null,
+  volunteeringProgram: '',
   firstName: '',
   lastName: '',
   cellphone: '',
@@ -21,16 +21,21 @@ const VolunteerObj = {
   status: '',
   files: []
 };
-
-const associatedPrograms = ['מסעדת לשובע ת״א', 'הסרטן הפריך']; // Test array, needed to come from the back end
-
 const NewVolunteerModal = ({ open, setOpen }) => {
   const dispatch = useDispatch();
+  const { volunteeringProgram } = useSelector((state) => state.volunteeringProgramReducer);
 
   const [isOption2, setIsOption2] = useState(false);
   const [isOption3, setIsOption3] = useState(false);
   const [enable, setEnable] = useState(true);
   const [newVolunteer, setNewVolunteer] = useState(VolunteerObj);
+
+  useEffect(() => {
+    dispatch(loadVolunteeringProgram());
+  }, [dispatch]);
+
+  const associatedPrograms = volunteeringProgram; //  array,  from the back end
+
   const handleChange = (e) => {
     let value = e.target.value;
     if (e.target.type === 'file') {
@@ -38,6 +43,9 @@ const NewVolunteerModal = ({ open, setOpen }) => {
       console.log('e.target.value', e.target.files);
     }
     setNewVolunteer((prev) => ({ ...prev, [e.target.name]: value }));
+    if (e.target.name === 'volunteeringProgram')
+      return setNewVolunteer((prev) => ({ ...prev, volunteeringProgram: value }));
+
     if (e.target.name === 'volunteerType') {
       switch (e.target.value) {
         case 'עצמאי':
@@ -181,8 +189,8 @@ const NewVolunteerModal = ({ open, setOpen }) => {
                   <>
                     <label className="new_vol_modal_label">בחר מסגרת התנדבות</label>
                     <select name="volunteeringProgram" className="input" onChange={handleChange}>
-                      {associatedPrograms.map((program, idx) => (
-                        <option value={program} key={idx}>
+                      {associatedPrograms?.map((program, idx) => (
+                        <option value={program._id} key={idx}>
                           {program.name}
                         </option>
                       ))}

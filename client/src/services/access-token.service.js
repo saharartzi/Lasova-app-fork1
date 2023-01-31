@@ -3,12 +3,12 @@ import { storageService } from './storage.service';
 const TOKEN_STORAGE_KEY = `ACCESS_TOKEN`;
 
 function getToken() {
-  console.log(storageService.getItem(TOKEN_STORAGE_KEY));
+  // console.log(storageService.getItem(TOKEN_STORAGE_KEY));
   return storageService.getItem(TOKEN_STORAGE_KEY);
 }
 
 function setToken(token) {
-  console.log(storageService.getItem(TOKEN_STORAGE_KEY));
+  // console.log(storageService.getItem(TOKEN_STORAGE_KEY));
   return storageService.setItem(TOKEN_STORAGE_KEY, token);
 }
 
