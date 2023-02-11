@@ -2,8 +2,9 @@
     //border: 2px solid black;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    font-family: 'Rubik';
+    padding: 8px 16px;
+    font-family: 'Rubik-regular';
+    gap:8px;
 
 
 
@@ -19,6 +20,14 @@
                 color: #2A526F;
                 border-radius: 4px;
             }
+
+        }
+
+        .total-hours-container {
+            background-color: white;
+            border-radius: 4px;
+            padding: 8px 24px;
+            text-align: left;
         }
 
 

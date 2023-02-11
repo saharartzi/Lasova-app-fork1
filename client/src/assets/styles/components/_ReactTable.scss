@@ -4,9 +4,12 @@
   width: 99% !important;
   font-family: 'Rubik';
   font-size: 18px;
-  border-right: 1px solid rgba(224, 224, 224, 1);
-  border-left: 1px solid rgba(224, 224, 224, 1);
-  border-top: 1px solid rgba(224, 224, 224, 1);
+  //border-right: 1px solid rgba(224, 224, 224, 1);
+  //border-left: 1px solid rgba(224, 224, 224, 1);
+  border: 1px solid rgba(224, 224, 224, 1);
+  border-radius: 4px;
+  border-collapse: initial;
+  border-spacing: 0;
 
  tbody {
   background-color: #F6FBFE;
@@ -62,12 +65,15 @@
 //   background: #edf7fd;
 // }
 
+.td-subtable {
+  padding: 0 !important;
+}
 .subTable {
   width: 100%;
   height: 383px;
   display: inline-block;
   /*float: right;*/
   margin-left: 3rem;
-  padding: 1rem;
+  //padding: 1rem;
   background-color: #EDF7FD;
 }

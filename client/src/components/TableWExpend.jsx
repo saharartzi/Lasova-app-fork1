@@ -223,7 +223,7 @@ const MyTable = ({
                     </tr>
                     {row.isExpanded ? (
                       <tr>
-                         <td > 
+                         <td className="td-subtable"> 
                           <span className="subTable">
                              {renderRowSubComponent({ row })} 
                           </span>

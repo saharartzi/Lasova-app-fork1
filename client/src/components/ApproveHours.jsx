@@ -66,7 +66,7 @@ function ApproveHours(props) {
   return (
     <div className='Approved-hours'>
 
-       
+    <div className='hours-approval-table'> 
         <table id='approvalHours'>
             {/* <thead>
                 <tr>
@@ -91,7 +91,8 @@ function ApproveHours(props) {
                     )
                 ))}
             </tbody>
-        </table>    
+        </table>  
+        </div>  
 
     </div>
 
