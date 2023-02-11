@@ -1,5 +1,5 @@
 .mainContainer{
-    border: 2px solid black;
+    //border: 2px solid black;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -8,8 +8,17 @@
 
 
         .innerContainer{
-            border: 2px solid red;
-
+            //border: 2px solid red;
+            input {
+                background-color: #FFF8F0;
+                width: 100%;
+                border: none;
+                text-align: right;
+                padding: 8px;
+                height: 37px;
+                color: #2A526F;
+                border-radius: 4px;
+            }
         }
 
 

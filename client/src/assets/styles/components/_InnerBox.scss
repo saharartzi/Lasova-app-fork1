@@ -1,13 +1,33 @@
 /** CSS Variables */
 .innerBox{
-  border: 2px solid black;
+  //border: 2px solid black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px;
+  //padding: 16px;
+  font-size: 16px;
+  font-family: Rubik-Regular;
+  color: #2A526F;
+
+.general-box1{
+  height: 351px;
+  width: 420px;
+  background-color: white;
+  border-radius: 8px;
 }
 
-.general-box{
-  border: 2px solid pink;
+.general-box2{
+  height: 351px;
+  width: 450px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.general-box3{
+  height: 351px;
+  width: 450px;
+  background-color: #D7E5F4;
+  border-radius: 8px;
+}
 
 }

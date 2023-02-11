@@ -8,7 +8,14 @@
   border-left: 1px solid rgba(224, 224, 224, 1);
   border-top: 1px solid rgba(224, 224, 224, 1);
 
-  
+ tbody {
+  background-color: #F6FBFE;
+
+  .td-cell{
+    //border-left: 1px dashed rgba(224, 224, 224, 1);
+    border:none;
+  }
+ } 
  
 }
 
@@ -37,10 +44,7 @@
   }
 }
 
-.td-cell{
-  border-left: 1px dashed rgba(224, 224, 224, 1);
-  
-}
+
 
 // .resizer {
 //   display: inline-block;
@@ -60,9 +64,10 @@
 
 .subTable {
   width: 100%;
+  height: 383px;
   display: inline-block;
   /*float: right;*/
   margin-left: 3rem;
   padding: 1rem;
-  background-color: #ffffff;
+  background-color: #EDF7FD;
 }

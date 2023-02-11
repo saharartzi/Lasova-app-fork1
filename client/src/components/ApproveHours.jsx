@@ -64,11 +64,11 @@ function ApproveHours(props) {
     }
 
   return (
-    <div>
+    <div className='Approved-hours'>
 
        
         <table id='approvalHours'>
-            <thead>
+            {/* <thead>
                 <tr>
                     <th></th>
                     <th>תאריך</th>
@@ -76,7 +76,7 @@ function ApproveHours(props) {
                     <th>סיום</th>
                     <th>אישור</th>
                 </tr>             
-            </thead>
+            </thead> */}
 
             <tbody>
                 {volunteerHours.map((item, index) => (
@@ -84,8 +84,8 @@ function ApproveHours(props) {
                     <tr key={index}>
                         <td><button  onClick={()=>handleDelete({item, index})}><AiOutlineClose/></button></td>
                         <td>{item.updateDdate}</td>
-                        <td>{item.updatedStart}</td>
-                        <td>{item.updatedEnd}</td>
+                        <td>מ- {item.updatedStart}</td>
+                        <td>עד- {item.updatedEnd}</td>
                         <td><button className="btn btn-primary" onClick={()=>handleApproval({item, index})}>אישור</button></td>
                     </tr>
                     )
