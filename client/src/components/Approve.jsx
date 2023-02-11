@@ -2,9 +2,7 @@ import React from 'react';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 
 export default function Approve({ row, approveHours }) {
-  console.log('approveHours');
-
-  console.log(row);
+ 
 
   function showDate(date) {
     const userDate = new Date(date);

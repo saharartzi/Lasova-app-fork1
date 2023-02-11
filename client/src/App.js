@@ -3,18 +3,21 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
+//import Home from './pages/HomeCopy' //old one
 import GroupsPage from './pages/GroupsPage';
 import VolunteerLiveReport from './pages/VolunteerLiveReport';
 import Login from './pages/Login';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadUser } from './store/actions/auth';
 import Footer from './components/Footer';
+// import TestTable from './pages/TestTable';
 
 function App() {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.authReducer);
 
   //naama - need to check why only works with var, also why not getting back to login page when needed
+
   if (user && user.userType === 0) {
     var isVolunteer = true;
   } else {
@@ -25,10 +28,8 @@ function App() {
     if (localStorage.token) {
       dispatch(loadUser(localStorage.user?.email));
     }
-  }, []);
+  }, [dispatch]);
 
-  //naama-for test only
-  //let isMobile=true;
 
   return (
     <div className="top-container flex column">
@@ -60,7 +61,8 @@ function App() {
               element={
                 isAuthenticated ? (
                   !isVolunteer ? (
-                    <Home />
+                      <Home />
+                   
                   ) : (
                     <Navigate replace to="/report" />
                   )
@@ -69,6 +71,7 @@ function App() {
                 )
               }
             />
+            
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

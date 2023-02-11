@@ -7,8 +7,8 @@ import { ReactComponent as AddVolunteerIcon } from '../assets/imgs/icons/add-per
 const BasePage = ({ children, title, doSearch, doExport, onAdd }) => {
   return (
     <section className="base-page">
-      <section className="table-header">
-        <h1 className="table-header">{title}</h1>
+      <section className="table-header-base">
+        <h1 className="table-header-base">{title}</h1>
         <section className="actions flex align-center space-between">
           <span className="search flex align-center">
             <label htmlFor="search">
