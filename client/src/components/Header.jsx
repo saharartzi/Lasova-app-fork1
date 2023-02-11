@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../store/actions/auth';
+import { logout,  clickLogOut } from '../store/actions/auth';
 import UserMsg from '../components/UserMsg.jsx';
 import { ReactComponent as EnvelopeIcon } from '../assets/imgs/icons/envelope-icon.svg';
 
@@ -19,13 +19,15 @@ const Header = () => {
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
   const handelLogout = () => {
     setAnchorEl(null);
-    dispatch(logout());
+    dispatch(clickLogOut()) // make sure all the state is null
+    dispatch(logout()); // make sure that the localStorage is without "user"
   };
 
   return (

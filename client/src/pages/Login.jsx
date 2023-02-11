@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state) => state.authReducer);
+  const { isAuthenticated } = useSelector((state) => state.authReducer); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,7 +21,7 @@ const Login = () => {
   };
 
   if (isAuthenticated) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" replace />; 
   }
 
   return (
@@ -55,7 +55,7 @@ const Login = () => {
   );
 };
 
-const Wrapper = styled.section`
+const Wrapper = styled.section` 
   display: flex;
   align-items: center;
   flex-direction: column;

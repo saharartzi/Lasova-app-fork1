@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadVolunteerById, loadVolunteers, saveVolunteer } from '../store/actions/volunteerActions';
 import Loader from '../components/Loader';
 
+
 export default function VolunteerLiveReport() {
   const [isStarted, setIsStarted] = useState(false);
   const [btn, setBtn] = useState({ color: '#92CE7F', text: 'התחל' });
@@ -25,6 +26,7 @@ export default function VolunteerLiveReport() {
 
   useEffect(() => {
     if (!volunteer) {
+
       //dispatch(loadVolunteerById(user._id));
       dispatch(loadVolunteers(user.email)); // working but not getting the correct volunteer, maybe better to use ref in the backend to get the same id from the user
       //dispatch(loadVolunteerById("62a5c9a42071b52f89b35c82")); //for example only-"Reemos"
@@ -32,6 +34,7 @@ export default function VolunteerLiveReport() {
   }, []);
 
   let { volunteer } = useSelector((state) => state.volunteerReducer);
+
 
   const [editVolunteer, setEditVolunteer] = useState({
     ...volunteer
