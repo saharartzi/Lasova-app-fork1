@@ -127,6 +127,12 @@ const MyTable = ({
     useFlexLayout  // this make sure that the row can extand w/o moving the titles.
   );
 
+  //////Naama-Test
+  const saveData = (ev,row) => {
+    console.log("innerText",ev.target.innerText)
+    console.log("volunteer id",row.original._id)
+  }
+
 
   return (
     <React.Fragment>
@@ -215,7 +221,7 @@ const MyTable = ({
                       
                       {row.cells.map((cell) => {
                         return (
-                          <td  className="td-cell"  {...cell.getCellProps()}>
+                          <td  contentEditable='true' className="td-cell" onBlur={(ev)=>saveData(ev,row)}  {...cell.getCellProps()}>
                             {cell.render("Cell")}
                           </td>
                         );

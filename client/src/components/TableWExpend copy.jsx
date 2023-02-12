@@ -213,7 +213,7 @@ const MyTable = ({
                       
                       {row.cells.map((cell) => {
                         return (
-                          <td  className="td-cell"  {...cell.getCellProps()}>
+                          <td className="td-cell"  {...cell.getCellProps()}>
                             {cell.render("Cell")}
                           </td>
                         );
