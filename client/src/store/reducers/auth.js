@@ -39,7 +39,7 @@ export function authReducer(state = initialState, action) {
     case LOGOUT:
       localStorage.removeItem('user');
       accessTokenService.removeToken();
-      console.log('LOGOUT - token:', state.token);
+      // console.log('LOGOUT - token:', state.token);
       return {
         ...state,
         token: null,

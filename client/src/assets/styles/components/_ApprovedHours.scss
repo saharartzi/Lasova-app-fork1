@@ -5,6 +5,8 @@
 
     .hours-approval-table {
        padding: 8px 16px;
+       overflow-y:auto;
+       max-height: 210px;
     
     table {
         width: 100%;

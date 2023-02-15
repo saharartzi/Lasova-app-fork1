@@ -129,9 +129,21 @@ const MyTable = ({
 
   //////Naama-Test
   const saveData = (ev,row) => {
-    console.log("innerText",ev.target.innerText)
-    console.log("volunteer id",row.original._id)
-  }
+    let prefix = /cell_\d+_/
+  //   // let colName = (ev.target.__reactFiber$tbfqxyn4qg.alternate.key).replace(prefix, "");
+  //  if (colName!='expander')
+  //   {   
+  //   console.log("innerText",ev.target.innerText)
+  //   // console.log('colName', colName)
+  //   console.log("volunteer id",row.original._id)
+    // console.log("ev",ev)
+    // console.log('row', row)
+    // console.log('row_id', row.id)
+    //}
+
+    }
+    
+  
 
 
   return (
@@ -221,7 +233,7 @@ const MyTable = ({
                       
                       {row.cells.map((cell) => {
                         return (
-                          <td  contentEditable='true' className="td-cell" onBlur={(ev)=>saveData(ev,row)}  {...cell.getCellProps()}>
+                          <td  contentEditable='true' className="td-cell" suppressContentEditableWarning={true} onBlur={(ev)=>saveData(ev,row)}  {...cell.getCellProps()}>
                             {cell.render("Cell")}
                           </td>
                         );
@@ -230,7 +242,7 @@ const MyTable = ({
                     {row.isExpanded ? (
                       <tr>
                          <td className="td-subtable"> 
-                          <span className="subTable">
+                          <span  className="subTable">
                              {renderRowSubComponent({ row })} 
                           </span>
                          </td> 

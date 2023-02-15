@@ -27,11 +27,10 @@ import { updateUserMsg } from '../store/actions/systemActions.js';
 const Home = () => {
   const dispatch = useDispatch();
 
+ 
   // ===================== add new volunteer===================================
 
   const [isNewVolModalOpen, setNewVolModalOpen] = useState(false);
-  const [modalStatus, setModalStatus]=useState('None')
-  const [volunteer2Edit, seVolunteer2Edit]= useState('')
 
   // ===================== get data of volunteers ==========================
   //volunteersToShow ==> for the search part
@@ -76,19 +75,7 @@ const Home = () => {
     }
   }
 
-  //==========  open the edit volunteer modal ==================
-  const handleEdit=(row)=>{
-    seVolunteer2Edit(row)
-    setModalStatus('Edit')
-    setNewVolModalOpen(true)
-  }
-
   
-  //==========  open the New volunteer modal ==================
-  const handleNew=()=>{
-    setModalStatus('New')
-    setNewVolModalOpen(true)
-  }
 
   //================ table columns =============================
 
@@ -136,19 +123,7 @@ const Home = () => {
       {
         Header: "תוכנית",
         accessor: "volunteerType",
-      },
-      {
-        Header: "",
-        accessor: "action",
-        width:"10%",
-        disableFilters: true,
-        Cell: (row) => (
-          <div className="edit_del_buttons">
-              <button className='iconButton' onClick={() => handleEdit(row.row.original)}><MdModeEdit /></button>
-          </div>
-        )
       }
-    
     ], [])
     ;
 
@@ -173,6 +148,10 @@ const Home = () => {
 
   );
 
+  const handleNew = ()=>
+  {
+    setNewVolModalOpen(true)
+  }
 
   return (
 
@@ -180,8 +159,7 @@ const Home = () => {
       title="טבלת מתנדבים"
       doSearch={(searchWord) => { dispatch(searchVolunteers(searchWord, undefined)) }}
       doExport={handelExportToCSV}
-      onAdd={handleNew}
-      //{() => setNewVolModalOpen(true)}
+      onAdd={handleNew }
     >
       <StatusTabs
         setStatusFilter={(status) => {
@@ -206,10 +184,7 @@ const Home = () => {
       )}
 
       {/* ==============  adding new volunteer Modal ============================ */}
-      {isNewVolModalOpen && modalStatus==='New' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} modalStatus='New' />}
-
-       {/* ==============  Edit volunteer Modal ============================ */}
-       {isNewVolModalOpen && modalStatus==='Edit' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} data={volunteer2Edit} modalStatus='Edit'/>}
+      {isNewVolModalOpen && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} />}
 
     </BasePage>
 

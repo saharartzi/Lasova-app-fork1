@@ -7,113 +7,34 @@ import Modal from '@mui/material/Modal';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Button from '@mui/material/Button';
 // import { UploadVolunteerFilesButton } from './UploadButton';
-
-const NewVolunteerModal = (props) => {
-
+const VolunteerObj = {
+  taz: '',
+  volunteeringProgram: '',
+  firstName: '',
+  lastName: '',
+  cellphone: '',
+  city: '',
+  email: '',
+  gender: '',
+  summary: '',
+  volunteerType: '',
+  status: '',
+  files: []
+};
+const NewVolunteerModal = ({ open, setOpen }) => {
   const dispatch = useDispatch();
-
-  
   const { volunteeringProgram } = useSelector((state) => state.volunteeringProgramReducer);
-  const associatedPrograms = volunteeringProgram; //  array,  from the back end
-  
-  // const volunteer2edit =props.data
-  // ======= set the volunteer as blank or as Editone ======//
-  const [newVolunteer, setNewVolunteer] = useState({
-      'taz':'',
-      'volunteeringProgram': '',
-      'firstName': '',
-      'lastName': '',
-      'cellphone': '',
-      'city': '',
-      'email': '',
-      'gender': '',
-      'summary': '',
-      'volunteerType': '',
-      'status': '',
-      'files': [],
-
-      'talkSummary':'',
-      'maslul':'',
-      'milgaName':'',
-      'officerName':'',
-      'officerPhone':'',
-      'hasDrivingLicence':'',
-      'availableInEmergency':'',
-      'educationPlace':'',
-      'address':''
-
-
-  });
-
-        // 'volunteeringProgram_name': '',
-      // 'volunteeringProgram_id': '',
-
-  useEffect(() => {
-   if (props.modalStatus === 'Edit') { 
-
-    setNewVolunteer({
-      'taz':  props.data['taz'],
-      'volunteeringProgram': '',
-      'firstName': props.data['firstName'],
-      'lastName': props.data['lastName'],
-      'cellphone': props.data['cellphone'],
-      'city': props.data['city'],
-      'email': props.data['email'],
-      'gender': props.data['gender'],
-      'summary': props.data['summary'],
-      'volunteerType': props.data['volunteerType'],
-      'status': props.data['status'],
-      'files': [],
-      // 'volunteeringProgram_name': associatedPrograms[props.data][volunteeringProgram][0],
-      //  'volunteeringProgram_id': associatedPrograms[props.data][volunteeringProgram][0]
-      'talkSummary':'',
-      // 'studentOption':'',
-      // 'milgaName':'',
-      // 'kzinaName':'',
-      // 'kzinaphone':
-
-
-
-
-
-    })
-
-    let originalEditdata = props.data
-  }
-
-}, [])
-  // in case we cant update and we want to return the edit field to contain the original data
-
-
-
-
-  console.log('open status', props.modalStatus)
-  console.log('to edit', props.data)
-  console.log('newVolunteer', newVolunteer)
-  // console.log('volunteeringProgram', props.data['volunteeringProgram'][0])
-
-//   var result = associatedPrograms.filter(function(d) {
-//     return d._id ===  props.data['volunteeringProgram'][0]
-// })
-
-// console.log('associatedPrograms_name', result[0]['name'])
-
-  //===================================================
-
-
-
 
   const [isOption2, setIsOption2] = useState(false);
   const [isOption3, setIsOption3] = useState(false);
   const [enable, setEnable] = useState(true);
-
+  const [newVolunteer, setNewVolunteer] = useState(VolunteerObj);
 
   useEffect(() => {
     dispatch(loadVolunteeringProgram());
   }, [dispatch]);
 
-
-  console.log('associatedPrograms', associatedPrograms)
+  const associatedPrograms = volunteeringProgram; //  array,  from the back end
 
   const handleChange = (e) => {
     let value = e.target.value;
@@ -122,7 +43,6 @@ const NewVolunteerModal = (props) => {
       console.log('e.target.value', e.target.files);
     }
     setNewVolunteer((prev) => ({ ...prev, [e.target.name]: value }));
-
     if (e.target.name === 'volunteeringProgram')
       return setNewVolunteer((prev) => ({ ...prev, volunteeringProgram: value }));
 
@@ -153,141 +73,122 @@ const NewVolunteerModal = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setNewVolunteer(newVolunteer);
-    console.log('newVolunteer after',newVolunteer);
+    console.log(newVolunteer);
     dispatch(saveVolunteer(newVolunteer));
-    props.setOpen(false);
+    setOpen(false);
   };
-
-
-  const handleChangeProgram=(e)=>{
-    const selectedIndex = e.target.options.selectedIndex;
-    console.log('bla bla',e.target.options[selectedIndex].value)
-    // const keySelected=e.target.options[selectedIndex].getAttribute('data-key')
-    // setNewVolunteer({...newVolunteer, volunteeringProgram: e.target.value})
-  }
 
   return (
     <>
-      <Modal open={props.open} onClose={() => props.setOpen(false)}>
+      <Modal open={open} onClose={() => setOpen(false)}>
         <Box className="new_vol_modal">
-          <button className="new_vol_close-button" onClick={() => props.setOpen(false)} type="button" />
+          <button className="new_vol_close-button" onClick={() => setOpen(false)} type="button" />
           <h1 className="new_vol_title">רישום מתנדב חדש</h1>
           <div className="new_vol_modal_content">
-
             <form className="new_vol_modal_form" onSubmit={handleSubmit}>
               <div className="right">
-
-                <label htmlFor="firstName" className="new_vol_modal_label">שם פרטי*    </label>
+                <label htmlFor="firstName" className="new_vol_modal_label">
+                  שם פרטי*
+                </label>
                 <input
                   className="input"
                   type="text"
                   id="firstName"
                   name="firstName"
                   pattern=".{2,}"
-                  value={newVolunteer.firstName}
                   title="אנא הזן שם פרטי"
                   required
-                  onChange={(e)=>setNewVolunteer({...newVolunteer, firstName: e.target.value})}
+                  onChange={handleChange}
                 />
-
-                <label htmlFor="lastName" className="new_vol_modal_label">  שם משפחה*  </label>
+                <label htmlFor="lastName" className="new_vol_modal_label">
+                  שם משפחה*
+                </label>
                 <input
                   className="input"
                   type="text"
                   id="lastName"
                   name="lastName"
                   pattern=".{2,}"
-                  value={newVolunteer.lastName}
                   title="אנא הזן שם משפחה"
                   required
-                  onChange={(e)=>setNewVolunteer({...newVolunteer, lastName: e.target.value})}
+                  onChange={handleChange}
                 />
-
-                <label htmlFor="taz" className="new_vol_modal_label"> ת.ז* </label>
+                <label htmlFor="taz" className="new_vol_modal_label">
+                  ת.ז*
+                </label>
                 <input
                   className="input"
                   type="text"
                   id="taz"
                   name="taz"
                   pattern=".{9}"
-                  value={newVolunteer.taz}
                   title="אנא הזן תעודת זהות תקינה"
                   required
-                  onChange={(e)=>setNewVolunteer({...newVolunteer, taz: e.target.value})}
+                  onChange={handleChange}
                 />
-
-
-                <label htmlFor="cellphone" className="new_vol_modal_label">טלפון* </label>
+                <label htmlFor="cellphone" className="new_vol_modal_label">
+                  טלפון*
+                </label>
                 <input
                   className="input"
                   type="text"
                   id="cellphone"
                   name="cellphone"
                   pattern="05?[0-9]-?[0-9]{7}"
-                  value={newVolunteer.cellphone}
                   title="אנא הזן מספר סלולרי תקין"
                   required
-                  onChange={(e)=>setNewVolunteer({...newVolunteer, cellphone: e.target.value})}
+                  onChange={handleChange}
                 />
-
-
-                <label htmlFor="email" className="new_vol_modal_label">מייל* </label>
+                <label htmlFor="email" className="new_vol_modal_label">
+                  מייל*
+                </label>
                 <input
                   className="input new_vol_modal_input_mail "
                   type="email"
                   id="email"
                   name="email"
-                  value={newVolunteer.email}
                   title="אנא הזן כתובת מייל תקינה"
                   required
-                  onChange={(e)=>setNewVolunteer({...newVolunteer, email: e.target.value})}
+                  onChange={handleChange}
                 />
-
-
               </div>
               <div className="center">
-                <label htmlFor="city" className="new_vol_modal_label"> עיר מגורים*  </label>
+                <label htmlFor="city" className="new_vol_modal_label">
+                  עיר מגורים*
+                </label>
                 <input
                   className="input"
                   type="text"
                   id="city"
                   name="city"
                   pattern=".{2,}"
-                  value={newVolunteer.city}
                   title="אנא הזן עיר"
                   required
-                  onChange={(e)=>setNewVolunteer({...newVolunteer, city: e.target.value})}
+                  onChange={handleChange}
                 />
-
-                
                 <label className="new_vol_modal_label">לשון פניה</label>
-                <div className="gender_group"  >
+                <div className="gender_group" onChange={handleChange}>
                   <span className="gender_btns">
-                    <input type="radio" value="זכר" name="gender" checked={newVolunteer.gender === 'זכר'} onChange={(e)=>setNewVolunteer({...newVolunteer, gender: e.target.value})}/>
+                    <input type="radio" value="זכר" name="gender" />
                     <label htmlFor="male">זכר</label>
                   </span>
                   <span className="gender_btns">
-                  <input type="radio" value="נקבה" name="gender" checked={newVolunteer.gender === 'נקבה'} onChange={(e)=>setNewVolunteer({...newVolunteer, gender: e.target.value})}/>
+                    <input type="radio" value="נקבה" name="gender" />
                     <label htmlFor="female">נקבה</label>
                   </span>
                   <span className="gender_btns">
-                  <input type="radio" value="אחר" name="gender" checked={newVolunteer.gender === 'אחר'} onChange={(e)=>setNewVolunteer({...newVolunteer, gender: e.target.value})}/>
+                    <input type="radio" value="אחר" name="gender" />
                     <label htmlFor="other">אחר</label>
                   </span>
                 </div>
-
-
                 <label className="new_vol_modal_label">סיכום שיחה</label>
-                <TextareaAutosize type="text" name="summary" className="summary_text" onChange={(e)=>setNewVolunteer({...newVolunteer, talkSummary: e.target.value})} />
+                <TextareaAutosize type="text" name="summary" className="summary_text" onChange={handleChange} />
               </div>
- 
-
               <div className="left">
-                {/* <div> 
+                <div>
                   <>
-
                     <label className="new_vol_modal_label">בחר מסגרת התנדבות</label>
-                    <select name="volunteeringProgram" className="input" onChange={handleChangeProgram}>
+                    <select name="volunteeringProgram" className="input" onChange={handleChange}>
                       {associatedPrograms?.map((program, idx) => (
                         <option value={program._id} key={idx}>
                           {program.name}
@@ -335,15 +236,16 @@ const NewVolunteerModal = (props) => {
                       <input className="input" type="text" name="kzinaPhone" required onChange={handleChange} />
                     </>
                   )}
-                 
-
-                </div> */}
+                  {/* </div>
+                <UploadVolunteerFilesButton onChange={handleChange} />
+                <div> */}
+                </div>
                 <Button
                   variant="contained"
                   type="submit"
                   className={enable ? 'new_vol_modal_btn' : 'new_vol_modal_btn disable'}
                 >
-                 {props.modalStatus === 'New'?' הוסף למסגרת': 'עדכן מתנדב'}
+                  הוסף למסגרת
                 </Button>
               </div>
             </form>

@@ -66,18 +66,9 @@ function ApproveHours(props) {
   return (
     <div className='Approved-hours'>
 
-    <div className='hours-approval-table'> 
+    <div className='hours-approval-table' > 
         <table id='approvalHours'>
-            {/* <thead>
-                <tr>
-                    <th></th>
-                    <th>תאריך</th>
-                    <th>התחלה</th>
-                    <th>סיום</th>
-                    <th>אישור</th>
-                </tr>             
-            </thead> */}
-
+ 
             <tbody>
                 {volunteerHours.map((item, index) => (
                     item.verified==false && (
