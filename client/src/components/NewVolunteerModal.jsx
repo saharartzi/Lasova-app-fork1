@@ -45,7 +45,7 @@ const NewVolunteerModal = (props) => {
 
 
   useEffect(() => {
-    if (props.modalStatus == 'Edit') {
+    if (props.modalStatus === 'Edit') {
       setNewVolunteer({
         'taz': props.data['taz'],
         'volunteeringProgram': props.data['volunteeringProgram'][0],
@@ -68,7 +68,8 @@ const NewVolunteerModal = (props) => {
         'availableInEmergency': props.data['availableInEmergency'],
         'educationalInstitution': props.data['educationalInstitution'],
         'address': props.data['address'],
-        '_id ': props.data['id']
+        '_id ': props.data['id'],
+        'hours': props.data['hours'],
       })
     }
 
@@ -172,11 +173,11 @@ const NewVolunteerModal = (props) => {
                 <label htmlFor="email" className="new_vol_modal_label">מייל* </label>
                 <input
                   className="input new_vol_modal_input_mail "
-                  // type="email"
-                  type="text"
+                  type="email"
+                  //type="text"
                   id="email"
                   name="email"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                  // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                   value={newVolunteer.email}
                   title="אנא הזן כתובת מייל תקינה"
                   required
@@ -292,7 +293,7 @@ const NewVolunteerModal = (props) => {
                       של"צ
                     </option>
                   </select>
-                  {newVolunteer.volunteerType == 'סטודנט' && (
+                  {newVolunteer.volunteerType === 'סטודנט' && (
                     <>
                       <div className="student_group">
                         <span className="student_btns">
@@ -311,7 +312,7 @@ const NewVolunteerModal = (props) => {
                       <input className="input" type="text" value={newVolunteer.scholarshipName} name="scholarshipName" required onChange={handleEditFileds} />
                     </>
                   )}
-                  {newVolunteer.volunteerType == 'שלצ' && (
+                  {newVolunteer.volunteerType === 'שלצ' && (
                     <>
                       <label className="new_vol_modal_label">שם קצינת מבחן</label>
                       <input className="input" type="text" value={newVolunteer.officerName} name="officerName" required onChange={handleEditFileds} />

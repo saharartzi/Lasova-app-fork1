@@ -7,15 +7,14 @@ function ExtraData(props) {
   return (
     <div className='mainContainer'>
 
-
       <div className='col-lable'>מסלול</div>
       <div className='grouping'>
         <span className="student_btns">
-          <input type="radio" value="נקז" name="studentoption" studentoption="student" checked={newVolunteer.studentoption === 'נקז'} disabled />
+          <input type="radio" value="נקז" id='nakaz' name="studentoption" studentoption="student" className="disabled" checked={newVolunteer.studentoption === 'נקז'} disabled />
           <label htmlFor="nakaz">נק"ז</label>
         </span>
         <span className="student_btns">
-          <input type="radio" value="מלגה" name="studentoption" studentoption="student" checked={newVolunteer.studentoption === 'מלגה'} disabled />
+          <input type="radio" value="מלגה" name="studentoption" studentoption="student" className="disabled" checked={newVolunteer.studentoption === 'מלגה'} disabled />
           <label htmlFor="milga">מלגה</label>
         </span>
       </div>

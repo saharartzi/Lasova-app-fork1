@@ -31,8 +31,8 @@ const Home = () => {
   // ===================== add new volunteer===================================
 
   const [isNewVolModalOpen, setNewVolModalOpen] = useState(false);
-  const [modalStatus, setModalStatus]=useState()
-  const [volunteer2Edit, seVolunteer2Edit]= useState('')
+  const [modalStatus, setModalStatus] = useState()
+  const [volunteer2Edit, seVolunteer2Edit] = useState('')
 
   // ===================== get data of volunteers ==========================
   //volunteersToShow ==> for the search part
@@ -52,6 +52,13 @@ const Home = () => {
     { type: 'standby', label: 'מושהה', icon: <Standby /> },
     { type: 'inactive', label: 'לא פעיל', icon: <Inactive /> }
   ];
+
+  // ===================== volunteeringProgram ===========================================
+  const associatedPrograms = useSelector((state) => state.volunteeringProgramReducer.volunteeringProgram);
+
+  console.log('associatedPrograms', associatedPrograms)
+
+  console.log('volunteers', volunteers)
 
   //=====================  csv export =======================================
 
@@ -79,15 +86,15 @@ const Home = () => {
   }
 
   //==========  open the edit volunteer modal ==================
-  const handleEdit=(row)=>{
+  const handleEdit = (row) => {
     seVolunteer2Edit(row)
     setModalStatus('Edit')
     setNewVolModalOpen(true)
   }
 
-  
+
   //==========  open the New volunteer modal ==================
-  const handleNew=()=>{
+  const handleNew = () => {
     setModalStatus('New')
     setNewVolModalOpen(true)
   }
@@ -133,8 +140,16 @@ const Home = () => {
       },
       {
         Header: "מסגרת התנדבות ",
-        accessor: "volunteeringProgram.name",
+        accessor: "",
+        Cell: ({ row }) => {
+          return (
+            <div className="name-status">
+              {associatedPrograms ? associatedPrograms.find((prog) => prog._id === row.original.volunteeringProgram[0])?.name:''}
+            </div>
+          )
+        }
       },
+
       {
         Header: "מסגרת מפנה",
         accessor: "volunteerType",
@@ -142,19 +157,19 @@ const Home = () => {
       {
         Header: "",
         accessor: "action",
-        width:"10%",
+        width: "10%",
         disableFilters: true,
         Cell: (row) => (
           <div className="edit_del_buttons">
-              <button className='iconButton' onClick={() => handleEdit(row.row.original)}><MdModeEdit /></button>
+            <button className='iconButton' onClick={() => handleEdit(row.row.original)}><MdModeEdit /></button>
           </div>
         )
       }
-    
-    ], [])
+
+    ], [associatedPrograms, statuses])
     ;
 
-
+  //================ expand ==> provide extra data per volunteer  =============================
   const expandedRows = useMemo((volunteers) => {
     if (volunteers != null && volunteers.length > 0) {
       let arr;
@@ -168,7 +183,7 @@ const Home = () => {
   }, []);
 
 
-  // usecallback will run the subTable only once when the details will change
+  //===== usecallback will run the subTable only once when the details will change ===========
   const subTable = useCallback(
     ({ row }) =>
       <InnerVolunteerComp info={row.original} />
@@ -177,14 +192,13 @@ const Home = () => {
 
 
   return (
-
     <BasePage
       title="טבלת מתנדבים"
       doSearch={(searchWord) => { dispatch(searchVolunteers(searchWord, undefined)) }}
       doExport={handelExportToCSV}
       onAdd={handleNew}
-      //{() => setNewVolModalOpen(true)}
     >
+
       <StatusTabs
         setStatusFilter={(status) => {
           dispatch(searchVolunteers(undefined, status));
@@ -208,10 +222,10 @@ const Home = () => {
       )}
 
       {/* ==============  adding new volunteer Modal ============================ */}
-      {isNewVolModalOpen && modalStatus==='New' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} modalStatus='New' />}
+      {isNewVolModalOpen && modalStatus === 'New' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} modalStatus='New' />}
 
-       {/* ==============  Edit volunteer Modal ============================ */}
-       {isNewVolModalOpen && modalStatus==='Edit' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} data={volunteer2Edit} modalStatus='Edit'/>}
+      {/* ==============  Edit volunteer Modal ============================ */}
+      {isNewVolModalOpen && modalStatus === 'Edit' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} data={volunteer2Edit} modalStatus='Edit' />}
 
     </BasePage>
 

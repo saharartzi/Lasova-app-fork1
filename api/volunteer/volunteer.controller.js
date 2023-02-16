@@ -34,6 +34,7 @@ async function removeVolunteers(req, res) {
 async function volunteerUpdateVolunteer(req, res) {
   try {
     const volunteer = req.body;
+    console.log('volunteer1234')
     authenticate.authenticateToken(req, res, () => console.log('right user'));
     const updatedVolunteer = await volunteerUpdate(volunteer, req.user);
     res.send(updatedVolunteer);

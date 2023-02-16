@@ -154,6 +154,8 @@ export default function VolunteerLiveReport() {
   // convert hh:mm:ss to PM/AM mode
   const tConvert = (time) => {
     // Check correct time format and split into components
+    console.log('time', time)
+
     time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
 
     if (time.length > 1) { // If time format correct
