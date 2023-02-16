@@ -12,6 +12,7 @@ import StatusTabs from '../components/StatusTabs';
 
 import { AiOutlineCaretDown, AiFillCaretLeft } from 'react-icons/ai';
 import InnerVolunteerComp from "../components/InnerVolunteerComp";
+import { loadVolunteeringProgram } from '../store/actions/volunteeringProgramAction';
 
 import { ReactComponent as Standby } from '../assets/imgs/icons/status/standby.svg';
 import { ReactComponent as Active } from '../assets/imgs/icons/status/active.svg';
@@ -19,7 +20,7 @@ import { ReactComponent as Inactive } from '../assets/imgs/icons/status/inactive
 import { MdModeEdit } from 'react-icons/md';
 
 import ExportToCSV from "../components/ExportToCSV";
-
+//import NewVolunteerModal from '../components/NewVolunteerModal copy';
 import NewVolunteerModal from '../components/NewVolunteerModal';
 import { updateUserMsg } from '../store/actions/systemActions.js';
 //*********************************************************************************** */
@@ -30,7 +31,7 @@ const Home = () => {
   // ===================== add new volunteer===================================
 
   const [isNewVolModalOpen, setNewVolModalOpen] = useState(false);
-  const [modalStatus, setModalStatus]=useState('None')
+  const [modalStatus, setModalStatus]=useState()
   const [volunteer2Edit, seVolunteer2Edit]= useState('')
 
   // ===================== get data of volunteers ==========================
@@ -40,6 +41,7 @@ const Home = () => {
   // get all volunteers data
   useEffect(() => {
     dispatch(loadVolunteers());
+    dispatch(loadVolunteeringProgram());
   }, [isNewVolModalOpen, dispatch]);
 
 
@@ -130,11 +132,11 @@ const Home = () => {
         accessor: "taz",
       },
       {
-        Header: "מסגרת",
+        Header: "מסגרת התנדבות ",
         accessor: "volunteeringProgram.name",
       },
       {
-        Header: "תוכנית",
+        Header: "מסגרת מפנה",
         accessor: "volunteerType",
       },
       {

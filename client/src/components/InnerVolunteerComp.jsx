@@ -15,7 +15,7 @@ function TestInnerComp(info) {
        </div>
 
        <div className='general-box2'>
-        {/* <ExtraData data={info}/>     */}
+        <ExtraData data={info}/>    
        </div>
 
        <div className='general-box3'>

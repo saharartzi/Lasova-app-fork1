@@ -687,3 +687,10 @@
 2/13/2023, 10:09:05 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | Error: Invalid username / email 
 2/13/2023, 10:09:48 PM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
 2/14/2023, 11:20:13 AM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
+2/15/2023, 12:19:23 PM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
+2/16/2023, 12:07:26 AM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
+2/16/2023, 10:46:42 AM - ERROR - couldnt save volunteer | ValidationError: hasDrivingLicence: Cast to Boolean failed for value "אין" (type string) at path "hasDrivingLicence" because of "CastError", availableInEmergency: Cast to Boolean failed for value "כן" (type string) at path "availableInEmergency" because of "CastError" 
+2/16/2023, 10:47:52 AM - ERROR - couldnt save volunteer | ValidationError: hasDrivingLicence: Cast to Boolean failed for value "אין" (type string) at path "hasDrivingLicence" because of "CastError", availableInEmergency: Cast to Boolean failed for value "כן" (type string) at path "availableInEmergency" because of "CastError" 
+2/16/2023, 10:49:17 AM - ERROR - couldnt save volunteer | ValidationError: hasDrivingLicence: Cast to Boolean failed for value "יש" (type string) at path "hasDrivingLicence" because of "CastError", availableInEmergency: Cast to Boolean failed for value "כן" (type string) at path "availableInEmergency" because of "CastError" 
+2/16/2023, 10:50:06 AM - ERROR - couldnt save volunteer | ValidationError: hasDrivingLicence: Cast to Boolean failed for value "יש" (type string) at path "hasDrivingLicence" because of "CastError" 
+2/16/2023, 11:12:09 AM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
