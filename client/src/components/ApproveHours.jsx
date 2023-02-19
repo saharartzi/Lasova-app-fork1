@@ -60,6 +60,8 @@ function ApproveHours(props) {
     const handleDelete=(row)=>
     {
         volunteer.hours.splice(row.index, 1);
+console.log('volunteerDelete', volunteer)
+
         dispatch(saveVolunteer(volunteer, user))    
     }
 

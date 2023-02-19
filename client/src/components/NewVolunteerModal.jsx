@@ -11,34 +11,34 @@ const NewVolunteerModal = (props) => {
 
   const dispatch = useDispatch();
 
-  const associatedPrograms = useSelector((state) => state.volunteeringProgramReducer.volunteeringProgram);
-  const { user } = useSelector((state) => state.authReducer.user);
+  const associatedPrograms = useSelector(state => state.volunteeringProgramReducer.volunteeringProgram);
+  const user  = useSelector(state => state.authReducer.user);
 
 
 
   // ======= set the volunteer as blank or as Editone ======//
   const [newVolunteer, setNewVolunteer] = useState({
-    'taz': '',
-    'volunteeringProgram': '',
-    'firstName': '',
-    'lastName': '',
-    'cellphone': '',
-    'city': '',
-    'email': '',
-    'gender': '',
-    'summary': '',
-    'volunteerType': '',
-    'status': '',
-    'files': [],
-    'talkSummary': '',
-    'studentoption': '',
-    'scholarshipName': '',
-    'officerName': '',
-    'officerPhone': '',
-    'hasDrivingLicence': '',
-    'availableInEmergency': '',
-    'educationalInstitution': '',
-    'address': ''
+    taz: '',
+    volunteeringProgram: '',
+    firstName: '',
+    lastName: '',
+    cellphone: '',
+    city: '',
+    email: '',
+    gender: '',
+    summary: '',
+    volunteerType: '',
+    status: '',
+    files: [],
+    talkSummary: '',
+    studentoption: '',
+    scholarshipName: '',
+    officerName: '',
+    officerPhone: '',
+    hasDrivingLicence: '',
+    availableInEmergency: '',
+    educationalInstitution: '',
+    address: ''
 
 
   });
@@ -47,29 +47,29 @@ const NewVolunteerModal = (props) => {
   useEffect(() => {
     if (props.modalStatus === 'Edit') {
       setNewVolunteer({
-        'taz': props.data['taz'],
-        'volunteeringProgram': props.data['volunteeringProgram'][0],
-        'firstName': props.data['firstName'],
-        'lastName': props.data['lastName'],
-        'cellphone': props.data['cellphone'],
-        'city': props.data['city'],
-        'email': props.data['email'],
-        'gender': props.data['gender'],
-        'summary': props.data['summary'],
-        'volunteerType': props.data['volunteerType'],
-        'status': props.data['status'],
-        'files': [],
-        'talkSummary': props.data['talkSummary'],
-        'studentoption': props.data['studentoption'],
-        'scholarshipName': props.data['scholarshipName'],
-        'officerName': props.data['officerName'],
-        'officerPhone': props.data['officerPhone'],
-        'hasDrivingLicence': props.data['hasDrivingLicence'],
-        'availableInEmergency': props.data['availableInEmergency'],
-        'educationalInstitution': props.data['educationalInstitution'],
-        'address': props.data['address'],
-        '_id ': props.data['id'],
-        'hours': props.data['hours'],
+        taz: props.data['taz'],
+        volunteeringProgram: props.data['volunteeringProgram'][0],
+        firstName: props.data['firstName'],
+        lastName: props.data['lastName'],
+        cellphone: props.data['cellphone'],
+        city: props.data['city'],
+        email: props.data['email'],
+        gender: props.data['gender'],
+        summary: props.data['summary'],
+        volunteerType: props.data['volunteerType'],
+        status: props.data['status'],
+        files: [],
+        talkSummary: props.data['talkSummary'],
+        studentoption: props.data['studentoption'],
+        scholarshipName: props.data['scholarshipName'],
+        officerName: props.data['officerName'],
+        officerPhone: props.data['officerPhone'],
+        hasDrivingLicence: props.data['hasDrivingLicence'],
+        availableInEmergency: props.data['availableInEmergency'],
+        educationalInstitution: props.data['educationalInstitution'],
+        address: props.data['address'],
+        _id: props.data['_id'],
+        hours: props.data['hours'],
       })
     }
 
@@ -78,10 +78,6 @@ const NewVolunteerModal = (props) => {
     let originalEditdata = props.data
   }, [])
 
-
-  // console.log('open status', props.modalStatus)
-  // console.log('to edit', props.data)
-  // console.log('newVolunteer', newVolunteer)
 
   //===================================================
 
