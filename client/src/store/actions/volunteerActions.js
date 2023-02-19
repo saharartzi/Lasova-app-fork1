@@ -22,13 +22,11 @@ export function loadVolunteers(email = null) {
   return async (dispatch) => {
     try {
       if (!email) {
-      const volunteers = await volunteerService.query();
-      console.log('volunteers',volunteers );
-      dispatch({ type: 'LOAD_VOLUNTEERS', volunteers });
-      }
-      else
-      {
-      // if (email) {
+        const volunteers = await volunteerService.query();
+        console.log('volunteers', volunteers);
+        dispatch({ type: 'LOAD_VOLUNTEERS', volunteers });
+      } else {
+        // if (email) {
         const filteredVolunteers = await volunteerService.query({ email });
         const volunteerData = filteredVolunteers[0];
         // console.log('volunteerData:', volunteerData);
@@ -58,8 +56,8 @@ export function loadVolunteerById(userId) {
 //Naama- tried to filter status with current search, i need to create 'filterBy' that will include both and send them together.
 export function searchVolunteers(searchText, status) {
   return (dispatch, getState) => {
-    console.log('searchText1111', searchText)
-    console.log('status1111', status)
+    console.log('searchText1111', searchText);
+    console.log('status1111', status);
     const { volunteers } = getState().volunteerReducer;
     if (!searchText) {
       let filteredVolunteers = filterVolunteersByStatus(status, volunteers);
@@ -97,11 +95,16 @@ function filterVolunteersByStatus(status, volunteers) {
  * if volunteer has id, we know it is an update request,
  * else it is post. */
 export function saveVolunteer(volunteerToSave, user) {
+  console.log('saveVolunteersaveVolunteersaveVolunteer');
+  console.log(volunteerToSave);
+  console.log(volunteerToSave._id);
+  console.log(user);
   return async (dispatch) => {
     try {
       const type = volunteerToSave._id ? 'UPDATE_VOLUNTEER' : 'ADD_VOLUNTEER';
 
       if (type === 'UPDATE_VOLUNTEER') {
+        console.log('OREL-UPDATE_VOLUNTEER');
         var updatedVolunteer = volunteerService.saveVolunteer(volunteerToSave, user); //Naama //why???
       } else {
         volunteerToSave = await volunteerService.saveVolunteer(volunteerToSave);

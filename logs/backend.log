@@ -694,6 +694,10 @@
 2/16/2023, 10:49:17 AM - ERROR - couldnt save volunteer | ValidationError: hasDrivingLicence: Cast to Boolean failed for value "יש" (type string) at path "hasDrivingLicence" because of "CastError", availableInEmergency: Cast to Boolean failed for value "כן" (type string) at path "availableInEmergency" because of "CastError" 
 2/16/2023, 10:50:06 AM - ERROR - couldnt save volunteer | ValidationError: hasDrivingLicence: Cast to Boolean failed for value "יש" (type string) at path "hasDrivingLicence" because of "CastError" 
 2/16/2023, 11:12:09 AM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
+<<<<<<< HEAD
+2/19/2023, 8:30:28 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+2/19/2023, 8:30:44 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
+=======
 2/16/2023, 12:36:27 PM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
 2/16/2023, 8:36:36 PM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
 2/16/2023, 8:38:52 PM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
@@ -745,4 +749,3 @@
 2/16/2023, 11:00:03 PM - ERROR - error updating volunteer undefined | Error: User dont have permission for this action 
 2/16/2023, 11:11:38 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | Error: Invalid username / email 
 2/16/2023, 11:11:59 PM - ERROR - error while trying to login user testSignupRequest@gmail.com | Error: Invalid username / email 
-2/19/2023, 9:07:18 PM - ERROR - error while trying to login user community@lasova.org.il | Error: Invalid username / email 
