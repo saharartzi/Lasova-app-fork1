@@ -325,7 +325,8 @@ const NewVolunteerModal = (props) => {
                 <Button
                   variant="contained"
                   type="submit"
-                  className={enable ? 'new_vol_modal_btn' : 'new_vol_modal_btn disable'}
+                  className={enable ? 'new_vol_modal_btn bton' : 'new_vol_modal_btn bton disable'} 
+                 
                 >
                   {props.modalStatus === 'New' ? ' הוסף למסגרת' : 'עדכן מתנדב'}
                 </Button>

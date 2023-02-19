@@ -47,6 +47,9 @@
     display: block;
 
     }
+    
+
+
 
   
 
@@ -122,6 +125,15 @@
     cursor: not-allowed;
     background-color: #c4c4c4;
     pointer-events: none;
+  }
+
+  .bton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);/* #edf7fd */
+  }
+  
+  .bton:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
   }
 
   
