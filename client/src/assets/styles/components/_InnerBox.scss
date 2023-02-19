@@ -9,6 +9,12 @@
   font-family: Rubik-Regular;
   color: #2A526F;
 
+.mid_innerBox{
+  width: 34%;
+  border-radius: 8px;
+
+}
+
 .general-box1{
   height: 351px;
   width: 32%;
@@ -18,8 +24,10 @@
 }
 
 .general-box2{
-  height: 351px;
-  width: 34%;
+  display: flex;
+ gap: 20px;
+  height: 40px;
+  width: 100%;
   background-color: white;
   border-radius: 8px;
   margin: 0px 8px;
