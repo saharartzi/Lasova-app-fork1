@@ -33,7 +33,6 @@ function App() {
     }
   }, [dispatch]);
 
-
   return (
     <div className="top-container flex column">
       <div id="dropdown-root"></div>
@@ -64,8 +63,7 @@ function App() {
               element={
                 isAuthenticated ? (
                   !isVolunteer ? (
-                      <Home />
-                   
+                    <Home />
                   ) : (
                     <Navigate replace to="/report" />
                   )
@@ -74,7 +72,7 @@ function App() {
                 )
               }
             />
-            
+
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

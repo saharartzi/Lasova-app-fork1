@@ -34,7 +34,7 @@ async function removeVolunteers(req, res) {
 async function volunteerUpdateVolunteer(req, res) {
   try {
     const volunteer = req.body;
-    console.log('volunteer1234')
+    console.log('volunteer1234');
     authenticate.authenticateToken(req, res, () => console.log('right user'));
     const updatedVolunteer = await volunteerUpdate(volunteer, req.user);
     res.send(updatedVolunteer);
@@ -58,8 +58,6 @@ async function adminUpdateVolunteer(req, res) {
 
 async function addVolunteer(req, res) {
   console.log('addVolunteer');
-  console.log('req');
-  console.log(req.body);
 
   try {
     let {
