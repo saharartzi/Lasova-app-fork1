@@ -73,10 +73,6 @@ const NewVolunteerModal = (props) => {
     let originalEditdata = props.data;
   }, []);
 
-  // console.log('open status', props.modalStatus)
-  // console.log('to edit', props.data)
-  // console.log('newVolunteer', newVolunteer)
-
   //===================================================
 
   const [enable, setEnable] = useState(true);
