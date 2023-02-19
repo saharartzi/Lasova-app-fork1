@@ -184,7 +184,7 @@ export default function VolunteerLiveReport() {
           {!endTime && !forgotToReport && (
             <div className="report-form">
               <p className="report-program">{volunteer.groupName}</p>
-              <button className="report-btn" style={{ backgroundColor: btn.color }} onClick={toggleBtn}>
+              <button className="report-btn bton" style={{ backgroundColor: btn.color }} onClick={toggleBtn}>
                 {btn.text}
               </button>
 
@@ -263,7 +263,7 @@ export default function VolunteerLiveReport() {
 
               {/*=======  in case we are after "סיום" ===========  */}
               {!isStarted && !forgotToReport &&
-                <button className="confirm-btn" onClick={handleContinue}>
+                <button className="confirm-btn bton" onClick={handleContinue}>
                   המשך
                 </button>
               }
@@ -271,13 +271,13 @@ export default function VolunteerLiveReport() {
               {/*=======  in case we are after "שכחת לדווח" ====  */}
               <div className='confirm_cancel_addtime'>
                 {forgotToReport && (
-                  <button className="back-btn" onClick={confirmHours}>
+                  <button className="back-btn bton" onClick={confirmHours}>
                     אישור
                   </button>
                 )}
 
                 {forgotToReport &&
-                  <button className="back-btn" onClick={handleContinue}>
+                  <button className="back-btn bton" onClick={handleContinue}>
                     חזור
                   </button>
                 }

@@ -113,6 +113,12 @@ const Wrapper = styled.section`
     cursor: pointer;
     font-family: inherit;
   }
+  .submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+.submit:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
 `;
 
 export default Login;

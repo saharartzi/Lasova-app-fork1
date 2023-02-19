@@ -4,6 +4,7 @@
   .table-header-base {
     margin-inline-end: rem(45px);
     margin-bottom: vh(20px);
+
     h1 {
       margin-top: 36px;
       font-family: 'Assistant';
@@ -27,10 +28,12 @@
       background: #edf7fd;
       border-radius: 4px;
       transition: 0.4s;
+
       &:hover,
       &:active {
         border: #33b1ff 0.5px solid;
       }
+
       label {
         height: vh(20px);
         cursor: pointer;
@@ -40,6 +43,7 @@
           width: vh(20.43px);
         }
       }
+
       input {
         font-family: Assistant-Reg;
         width: 100%;
@@ -50,13 +54,16 @@
         background-color: transparent;
         border: none;
         cursor: pointer;
+
         &:focus {
           outline: none;
         }
+
         &::-webkit-search-cancel-button {
           -webkit-appearance: none;
         }
       }
+
       // .clear-btn {
       // 	height: vh(20px);
       // 	width: vh(30px);
@@ -74,6 +81,7 @@
 
     .header-btns {
       gap: vh(58px);
+
       button {
         display: flex;
         align-items: center;
@@ -82,13 +90,16 @@
         width: vh(75px);
         background-color: $lightBg;
         border-radius: vh(6px);
+
         &:hover {
           background-color: $hoverBg;
         }
+
         &.export svg {
           height: vh(40px);
           width: vh(40px);
         }
+
         &.add-new svg {
           height: vh(50px);
           width: vh(50px);
@@ -98,12 +109,27 @@
   }
 }
 
+
+
+.bton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);/* #edf7fd */
+;
+ 
+}
+
+.bton:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+}
+
+
 .base-page {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 80px);
   padding: 0% 6%;
 }
+
 .actions {
   display: flex;
   width: 97%;
@@ -111,7 +137,7 @@
 
 .MuiList-root {
   .Mui-disabled {
-    color:rgb(38, 144, 165);
+    color: rgb(38, 144, 165);
     opacity: 100% !important;
     font-style: italic;
   }
@@ -126,7 +152,7 @@
 .circle-approve {
   color: rgb(146, 206, 127);
   font-size: 25px;
-  
+
   /*height: 30px;
   width: 30px;
   background-color: rgb(146, 206, 127);*/
@@ -136,7 +162,7 @@
 .approve-hours {
   display: flex;
   flex-direction: row;
-  gap:10px;
+  gap: 10px;
 }
 
 .approve-hours-btn {
@@ -144,8 +170,9 @@
   padding: 7px;
   background-color: rgb(208, 235, 208);
   color: #646363;
-    font-weight: 600;
+  font-weight: 600;
 }
+
 .approve-hours-btn:hover {
   padding: 9px;
   background-color: rgb(152, 208, 152);

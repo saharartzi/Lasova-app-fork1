@@ -160,8 +160,8 @@ const Home = () => {
         width: "10%",
         disableFilters: true,
         Cell: (row) => (
-          <div className="edit_del_buttons">
-            <button className='iconButton' onClick={() => handleEdit(row.row.original)}><MdModeEdit /></button>
+          <div >
+            <button className='bton' onClick={() => handleEdit(row.row.original)}><MdModeEdit /></button>
           </div>
         )
       }
