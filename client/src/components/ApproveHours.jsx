@@ -40,23 +40,26 @@ function ApproveHours(props) {
     }
   }
 
-  useEffect(() => {
-    props.handleTotalHours(TotalDuration2Approve);
-  }, [TotalDuration2Approve]);
+      useEffect(() => {
+        props.handleTotalHours(TotalDuration2Approve)
+      }, [TotalDuration2Approve])
+     
 
-  // approve the table's row of date and hours
-  const handleApproval = (row) => {
-    let newHours = volunteer.hours;
-    newHours[row.index].verified = true;
-    setVolunteer({ ...volunteer, hours: newHours });
-    dispatch(saveVolunteer(volunteer, user));
-  };
-
-  // delete the table's row of date and hours
-  const handleDelete = (row) => {
-    volunteer.hours.splice(row.index, 1);
-    dispatch(saveVolunteer(volunteer, user));
-  };
+    // approve the table's row of date and hours
+    const handleApproval=(row)=>
+    {
+        let newHours=volunteer.hours
+        newHours[row.index].verified=true
+        setVolunteer({...volunteer, hours:newHours })
+        dispatch(saveVolunteer(volunteer, user))
+    }
+         
+    // delete the table's row of date and hours
+    const handleDelete=(row)=>
+    {
+        volunteer.hours.splice(row.index, 1);
+        dispatch(saveVolunteer(volunteer, user))    
+    }
 
   return (
     <div className="Approved-hours">
