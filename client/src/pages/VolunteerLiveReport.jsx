@@ -218,45 +218,76 @@ export default function VolunteerLiveReport() {
                 <p className="date-text"> תאריך הפעילות (MM-DD-YYYY) </p>
 
                 {/*=======  date  ===========  */}
+                {endTime?
                 <input
-                  type={endTime ? 'text' : 'date'}
+                  type='text' 
                   name="date"
-                  onChange={(ev) => handleChange(ev)}
-                  placeholder={
-                    endTime
-                      ?
+                  value={
                       (new Date(volunteer.hours[0]?.start).getMonth() + 1) +
                       '/' +
                       (new Date(volunteer.hours[0]?.start).getDate()) +
                       '/' +
                       new Date(volunteer.hours[0]?.start).getFullYear()
-                      : ''
-                  }
+                        }
+                  readOnly
                 />
+                :
+                  <input
+                  type='date'
+                  name="date"
+                  onChange={(ev) => handleChange(ev)}
+                  placeholder= ''
+                   />
+              }
+
               </div>
 
               {/*=======  start & end time ===========  */}
               <div className="hours">
                 <div className="input-start">
                   <p className="start-hour-text">שעת התחלה</p>
+                    {endTime ?
+                    
+                   <input
+                    type= 'text' 
+                    name="startHour"
+                    value={tConvert(new Date(volunteer.hours[0]?.start).toString().split(' ')[4])}
+                    readOnly
+                   />
+                  :
 
                   <input
-                    type={endTime ? 'text' : 'time'}
+                    type= 'time'
                     name="startHour"
-                    placeholder={endTime ? tConvert(new Date(volunteer.hours[0]?.start).toString().split(' ')[4]) : ''}
-                    onChange={(ev) => handleChange(ev)}
-                  />
+                    placeholder= ''
+                    onChange={(ev) => handleChange(ev)}       />
+                  
+                  }
 
+                    
 
                 </div>
                 <div className="input-end">
                   <p className="end-hour-text">שעת סיום</p>
-                  <input
-                    type={endTime ? 'text' : 'time'}
-                    name="endHour"
-                    placeholder={endTime ? tConvert(new Date(volunteer.hours[0]?.end).toString().split(' ')[4]) : ''}
-                    onChange={(ev) => handleChange(ev)}
-                  />
+
+                  {endTime ?
+                    <input
+                     type= 'text' 
+                     name="endHour"
+                     value={tConvert(new Date(volunteer.hours[0]?.end).toString().split(' ')[4])}
+                     readOnly
+                    />
+                   :
+ 
+                   <input
+                     type= 'time'
+                     name="endHour"
+                     placeholder= ''
+                     onChange={(ev) => handleChange(ev)}       />
+                   
+                   }
+ 
+
 
                 </div>
               </div>
