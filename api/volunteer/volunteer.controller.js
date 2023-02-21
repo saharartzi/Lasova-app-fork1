@@ -9,8 +9,6 @@ const authenticate = require('../../middlewares/authentication.middleware');
 async function getVolunteers(req, res) {
   try {
     const queryOptions = req.query;
-
-    console.log('req.query: ', req.query);
     if (req.user.userType === UserTypes.ProgramManager) {
       queryOptions.volunteeringPrograms = req.user.associatedPrograms;
     }

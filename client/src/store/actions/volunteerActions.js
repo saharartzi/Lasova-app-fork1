@@ -17,13 +17,12 @@ const STORAGE_KEY = 'volunteers';
 
 export function loadVolunteers(email = null) {
   //naama-added email to try to get volunteer by user details
-  console.log('email');
-  console.log(email);
+  console.log('email', email);
   return async (dispatch) => {
     try {
       if (!email) {
         const volunteers = await volunteerService.query();
-        console.log('volunteers', volunteers);
+        console.log('volunteers444444', volunteers);
         dispatch({ type: 'LOAD_VOLUNTEERS', volunteers });
       } else {
         // if (email) {
@@ -95,10 +94,10 @@ function filterVolunteersByStatus(status, volunteers) {
  * if volunteer has id, we know it is an update request,
  * else it is post. */
 export function saveVolunteer(volunteerToSave, user) {
-  console.log('saveVolunteersaveVolunteersaveVolunteer');
-  console.log(volunteerToSave);
-  console.log(volunteerToSave._id);
-  console.log(user);
+  // console.log('saveVolunteersaveVolunteersaveVolunteer');
+  // console.log(volunteerToSave);
+  // console.log(volunteerToSave._id);
+  // console.log(user);
   return async (dispatch) => {
     try {
       const type = volunteerToSave._id ? 'UPDATE_VOLUNTEER' : 'ADD_VOLUNTEER';
@@ -109,6 +108,7 @@ export function saveVolunteer(volunteerToSave, user) {
       } else {
         volunteerToSave = await volunteerService.saveVolunteer(volunteerToSave);
       }
+      
       dispatch({ type, volunteer: volunteerToSave });
       return updatedVolunteer;
     } catch (err) {

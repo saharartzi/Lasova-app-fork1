@@ -42,9 +42,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(loadVolunteers());
     dispatch(loadVolunteeringProgram());
+   
   }, [isNewVolModalOpen, dispatch]);
 
-
+  console.log('isNewVolModalOpen in useEffect 12324234234', isNewVolModalOpen)
   // ===================== stauses ===========================================
   // for setting the circle status next to the first name 
   const statuses = [
@@ -55,10 +56,6 @@ const Home = () => {
 
   // ===================== volunteeringProgram ===========================================
   const associatedPrograms = useSelector((state) => state.volunteeringProgramReducer.volunteeringProgram);
-
-  console.log('associatedPrograms', associatedPrograms)
-
-  console.log('volunteers', volunteers)
 
   //=====================  csv export =======================================
 
@@ -222,10 +219,10 @@ const Home = () => {
       )}
 
       {/* ==============  adding new volunteer Modal ============================ */}
-      {isNewVolModalOpen && modalStatus === 'New' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} modalStatus='New' />}
+      {isNewVolModalOpen && modalStatus === 'New' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} modalStatus='New' valunteersList = {volunteers}/>}
 
       {/* ==============  Edit volunteer Modal ============================ */}
-      {isNewVolModalOpen && modalStatus === 'Edit' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} data={volunteer2Edit} modalStatus='Edit' />}
+      {isNewVolModalOpen && modalStatus === 'Edit' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} data={volunteer2Edit} modalStatus='Edit' valunteersList = {volunteers} />}
 
     </BasePage>
 

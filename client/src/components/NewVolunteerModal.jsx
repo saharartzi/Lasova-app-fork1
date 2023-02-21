@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveVolunteer } from '../store/actions/volunteerActions';
+import { loadVolunteers, saveVolunteer } from '../store/actions/volunteerActions';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
@@ -13,8 +13,12 @@ const NewVolunteerModal = (props) => {
   const associatedPrograms = useSelector((state) => state.volunteeringProgramReducer.volunteeringProgram);
   const { user } = useSelector((state) => state.authReducer);
 
-  console.log('useruseruseruseruseruseruseruseruser');
-  console.log(user);
+  //=== make sure that there are no 2 emails alike ==============
+  const volunteersEmails=props.valunteersList.map(elem => elem['email'])
+  const index = volunteersEmails.indexOf(props.data['email']);
+  delete volunteersEmails[index];
+
+
   // ======= set the volunteer as blank or as Editone ======//
   const [newVolunteer, setNewVolunteer] = useState({
     taz: '',
@@ -71,17 +75,27 @@ const NewVolunteerModal = (props) => {
       })
     }
 
-    // in case we cant update and we want to return the edit field to contain the original data
-    let originalEditdata = props.data
   }, [])
 
 
   //===================================================
 
+
   const [enable, setEnable] = useState(true);
 
   const handleEditFileds = (e) => {
-    setNewVolunteer({ ...newVolunteer, [e.target.name]: e.target.value });
+    if ([e.target.name]!='email'){
+      setNewVolunteer({ ...newVolunteer, [e.target.name]: e.target.value })
+    }
+    else {
+       //=== make sure that there are no 2 emails alike ==============
+     if (!volunteersEmails.includes(e.target.value)) {
+      setNewVolunteer({ ...newVolunteer, [e.target.name]: e.target.value })
+     }
+     else{
+      alert('המייל שהוכנס כבר קיים במערכת. אנא נסו שוב' + e.target.value)
+     }   
+    }    
   };
 
   const handleSubmit = (e) => {
@@ -89,7 +103,8 @@ const NewVolunteerModal = (props) => {
     setNewVolunteer(newVolunteer);
     props.modalStatus === 'New' ? dispatch(saveVolunteer(newVolunteer)) : dispatch(saveVolunteer(newVolunteer, user));
     props.setOpen(false);
-    window.location.reload(false);
+    dispatch(loadVolunteers())
+
   };
 
   return (
