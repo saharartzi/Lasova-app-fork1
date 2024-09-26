@@ -27,17 +27,19 @@ export const httpService = {
 
 async function ajax(endpoint, method = 'GET', data = null) {
   try {
-    console.log('ajax');
-    console.log(endpoint);
-    console.log(method);
+
+    console.log('data3333333333', data);
+    // console.log('ajax');
+    // console.log(endpoint);
+    // console.log(method);
     const res = await axios({
       url: `${BASE_URL}${endpoint}`,
       method,
       data,
       params: method === 'GET' ? data : null
     });
-    console.log('res.data');
-    console.log(res.data);
+    console.log('res.data', res.data);
+
     return res.data;
   } catch (err) {
     console.log(

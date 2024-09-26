@@ -11,7 +11,7 @@ export function loadVolunteeringProgram() {
       const volunteeringProgram = await volunteeringProgramService.query();
       dispatch({ type: 'LOAD_VOLUNTEERING_PROGRAM', volunteeringProgram });
     } catch (err) {
-      console.log('Error loading groups:');
+      console.log('Error loading volunteeringProgram:');
       console.error(err);
     }
   };

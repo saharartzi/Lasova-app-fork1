@@ -12,7 +12,6 @@ import StatusTabs from '../components/StatusTabs';
 
 import { AiOutlineCaretDown, AiFillCaretLeft } from 'react-icons/ai';
 import InnerVolunteerComp from "../components/InnerVolunteerComp";
-import { loadVolunteeringProgram } from '../store/actions/volunteeringProgramAction';
 
 import { ReactComponent as Standby } from '../assets/imgs/icons/status/standby.svg';
 import { ReactComponent as Active } from '../assets/imgs/icons/status/active.svg';
@@ -20,7 +19,7 @@ import { ReactComponent as Inactive } from '../assets/imgs/icons/status/inactive
 import { MdModeEdit } from 'react-icons/md';
 
 import ExportToCSV from "../components/ExportToCSV";
-//import NewVolunteerModal from '../components/NewVolunteerModal copy';
+
 import NewVolunteerModal from '../components/NewVolunteerModal';
 import { updateUserMsg } from '../store/actions/systemActions.js';
 //*********************************************************************************** */
@@ -28,11 +27,10 @@ import { updateUserMsg } from '../store/actions/systemActions.js';
 const Home = () => {
   const dispatch = useDispatch();
 
+ 
   // ===================== add new volunteer===================================
 
   const [isNewVolModalOpen, setNewVolModalOpen] = useState(false);
-  const [modalStatus, setModalStatus] = useState()
-  const [volunteer2Edit, seVolunteer2Edit] = useState('')
 
   // ===================== get data of volunteers ==========================
   //volunteersToShow ==> for the search part
@@ -41,11 +39,9 @@ const Home = () => {
   // get all volunteers data
   useEffect(() => {
     dispatch(loadVolunteers());
-    dispatch(loadVolunteeringProgram());
-   
   }, [isNewVolModalOpen, dispatch]);
 
-  console.log('isNewVolModalOpen in useEffect 12324234234', isNewVolModalOpen)
+
   // ===================== stauses ===========================================
   // for setting the circle status next to the first name 
   const statuses = [
@@ -53,9 +49,6 @@ const Home = () => {
     { type: 'standby', label: 'מושהה', icon: <Standby /> },
     { type: 'inactive', label: 'לא פעיל', icon: <Inactive /> }
   ];
-
-  // ===================== volunteeringProgram ===========================================
-  const associatedPrograms = useSelector((state) => state.volunteeringProgramReducer.volunteeringProgram);
 
   //=====================  csv export =======================================
 
@@ -82,19 +75,7 @@ const Home = () => {
     }
   }
 
-  //==========  open the edit volunteer modal ==================
-  const handleEdit = (row) => {
-    seVolunteer2Edit(row)
-    setModalStatus('Edit')
-    setNewVolModalOpen(true)
-  }
-
-
-  //==========  open the New volunteer modal ==================
-  const handleNew = () => {
-    setModalStatus('New')
-    setNewVolModalOpen(true)
-  }
+  
 
   //================ table columns =============================
 
@@ -136,37 +117,17 @@ const Home = () => {
         accessor: "taz",
       },
       {
-        Header: "מסגרת התנדבות ",
-        accessor: "",
-        Cell: ({ row }) => {
-          return (
-            <div className="name-status">
-              {associatedPrograms ? associatedPrograms.find((prog) => prog._id === row.original.volunteeringProgram[0])?.name:''}
-            </div>
-          )
-        }
+        Header: "מסגרת",
+        accessor: "volunteeringProgram.name",
       },
-
       {
-        Header: "מסגרת מפנה",
+        Header: "תוכנית",
         accessor: "volunteerType",
-      },
-      {
-        Header: "",
-        accessor: "action",
-        width: "10%",
-        disableFilters: true,
-        Cell: (row) => (
-          <div >
-            <button className='bton' onClick={() => handleEdit(row.row.original)}><MdModeEdit /></button>
-          </div>
-        )
       }
-
-    ], [associatedPrograms, statuses])
+    ], [])
     ;
 
-  //================ expand ==> provide extra data per volunteer  =============================
+
   const expandedRows = useMemo((volunteers) => {
     if (volunteers != null && volunteers.length > 0) {
       let arr;
@@ -180,22 +141,26 @@ const Home = () => {
   }, []);
 
 
-  //===== usecallback will run the subTable only once when the details will change ===========
+  // usecallback will run the subTable only once when the details will change
   const subTable = useCallback(
     ({ row }) =>
       <InnerVolunteerComp info={row.original} />
 
   );
 
+  const handleNew = ()=>
+  {
+    setNewVolModalOpen(true)
+  }
 
   return (
+
     <BasePage
       title="טבלת מתנדבים"
       doSearch={(searchWord) => { dispatch(searchVolunteers(searchWord, undefined)) }}
       doExport={handelExportToCSV}
-      onAdd={handleNew}
+      onAdd={handleNew }
     >
-
       <StatusTabs
         setStatusFilter={(status) => {
           dispatch(searchVolunteers(undefined, status));
@@ -219,10 +184,7 @@ const Home = () => {
       )}
 
       {/* ==============  adding new volunteer Modal ============================ */}
-      {isNewVolModalOpen && modalStatus === 'New' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} modalStatus='New' valunteersList = {volunteers}/>}
-
-      {/* ==============  Edit volunteer Modal ============================ */}
-      {isNewVolModalOpen && modalStatus === 'Edit' && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} data={volunteer2Edit} modalStatus='Edit' valunteersList = {volunteers} />}
+      {isNewVolModalOpen && <NewVolunteerModal open={isNewVolModalOpen} setOpen={setNewVolModalOpen} />}
 
     </BasePage>
 
